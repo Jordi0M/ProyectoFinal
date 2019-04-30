@@ -15,8 +15,12 @@ class CreateAudiosTable extends Migration
     {
         Schema::create('audios', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_usuario');
             $table->string('nombre');
             $table->timestamps();
+
+            //foranea
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 
