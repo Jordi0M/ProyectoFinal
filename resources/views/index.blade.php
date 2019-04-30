@@ -7,4 +7,15 @@
             AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         </div>
     </div>
+    <div class="row">
+    	<div class="col-sm-1">
+    		<span >Crash</span> <br>
+    		<span >Tom</span> <br>
+    		<span>Snare</span> <br>
+    		<span>Kick</span>
+
+    		
+    	</div>
+    	<div></div> 
+    </div>
 @endsection
