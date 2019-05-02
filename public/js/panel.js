@@ -8,7 +8,7 @@ function clickCasilla(){
     if ($(this).hasClass('hover')){
         $( this ).removeClass( "hover" );
         $( this ).css("background-color","");
-        audio.stop();
+        
         
     }else{
         $( this ).addClass( "hover" );
