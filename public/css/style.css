@@ -14,3 +14,45 @@
   .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   }
+
+.material-icons{
+  margin-top: 5px;
+  width:40px ;
+  height:40px;
+  align-content: center;
+  }
+.Teclas{
+  margin-top: 5px;
+  margin-left: 50px;
+}
+.Tecla{
+  float: left;
+  margin: 2px;
+ }
+
+ /*Slide Bar*/
+ .rangeslider{ 
+    width: 50%; 
+} 
+  
+.myslider { 
+    -webkit-appearance: none; 
+    background: #FCF3CF  ; 
+    width: 50%; 
+    height: 20px; 
+    opacity: 2; 
+   } 
+  
+  
+.myslider::-webkit-slider-thumb { 
+    -webkit-appearance: none; 
+    cursor: pointer; 
+    background: #34495E  ; 
+    width: 5%; 
+    height: 20px; 
+} 
+  
+  
+.myslider:hover { 
+    opacity: 1; 
+} 

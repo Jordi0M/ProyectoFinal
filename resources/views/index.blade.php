@@ -39,7 +39,26 @@
 
     		
     	</div>
-    	<div></div> 
+    	<div class="center_panel" >
+  
+
+  
+    		<div class="rangeslider"> 
+  <input type="range" min="1" max="100" value="10"
+                  class="myslider" id="sliderRange"> 
+  <p>Value: <span id="demo"></span></p> 
+</div> 
+  
+<script> 
+var rangeslider = document.getElementById("sliderRange"); 
+var output = document.getElementById("demo"); 
+output.innerHTML = rangeslider.value; 
+  
+rangeslider.oninput = function() { 
+  output.innerHTML = this.value; 
+} 
+</script> 
+    	</div> 
     </div>
     <script>
         //Este script añade en el div con id "nombre_audios", los audios que encuentre en la base de datos
@@ -56,5 +75,6 @@
                 }
 				
 		});
+		crearCasillas();
     </script>
 @endsection
