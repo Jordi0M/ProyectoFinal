@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'	 => "administrador",
             'email' =>	"jmartinezmateos@iesesteveterradas.cat",
-            'password' => "1234",
+            'password' => Hash::make( '1234' ),
         ]);
 
         $canciones = array(
