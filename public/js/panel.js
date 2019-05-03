@@ -40,12 +40,17 @@ function crearCasillas(){
         var Tecla=$('<div>').attr("class","Tecla").css(CssCasilla);      
         $(".Teclas").append(Tecla);
        }
+       crearSlide();
+    
+}
+
+function crearSlide(){
     var DivSlide=$('<div>').attr("class","rangeslider");
-    var inputSlide=$('input').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"});
+    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"});
     var SpanDemo=$('<span>').attr("id","demo");
+    $(".Teclas").append(DivSlide);
     $(".rangeslider").append(inputSlide);
     $(".rangeslider").append(SpanDemo);
-    $(".Teclas").append(".rangeslider");
     var rangeslider = document.getElementById("sliderRange"); 
     var output = document.getElementById("demo"); 
         output.innerHTML = rangeslider.value;     
@@ -53,7 +58,6 @@ function crearCasillas(){
       output.innerHTML = this.value; 
     } 
 }
-
 
 
 

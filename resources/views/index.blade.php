@@ -43,21 +43,6 @@
   
 
   
-    		<div class="rangeslider"> 
-  <input type="range" min="1" max="100" value="10"
-                  class="myslider" id="sliderRange"> 
-  <p>Value: <span id="demo"></span></p> 
-</div> 
-  
-<script> 
-var rangeslider = document.getElementById("sliderRange"); 
-var output = document.getElementById("demo"); 
-output.innerHTML = rangeslider.value; 
-  
-rangeslider.oninput = function() { 
-  output.innerHTML = this.value; 
-} 
-</script> 
     	</div> 
     </div>
     <script>

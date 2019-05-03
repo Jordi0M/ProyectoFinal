@@ -32,22 +32,28 @@
 
  /*Slide Bar*/
  .rangeslider{ 
-    width: 50%; 
+    width: 20%; 
+    float: left;
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
 } 
   
 .myslider { 
     -webkit-appearance: none; 
-    background: #FCF3CF  ; 
+    background:  #212f3c; 
     width: 50%; 
     height: 20px; 
     opacity: 2; 
+        border-radius: 5px;
+
    } 
   
   
 .myslider::-webkit-slider-thumb { 
     -webkit-appearance: none; 
     cursor: pointer; 
-    background: #34495E  ; 
+    background: #154360  ; 
     width: 5%; 
     height: 20px; 
 } 
