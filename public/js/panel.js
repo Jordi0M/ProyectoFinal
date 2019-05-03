@@ -32,7 +32,7 @@ function limpiarCasillas (){
 }
 
 
-function crearCasillas(nombre_audio){
+function crearCasillas(nombre_audio, key){
     var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
     var Teclas=$("<div>").attr("class","Teclas");
     $(".center_panel").append(Teclas);
@@ -40,19 +40,19 @@ function crearCasillas(nombre_audio){
         var Tecla=$('<div>').attr("class","Tecla hvr-glow").attr("nombre",nombre_audio).css(CssCasilla);      
         $(Teclas).append(Tecla);
        }
-       crearSlide();
+       crearSlide(key);
     
 }
 
-function crearSlide(){
+function crearSlide(key){
     var DivSlide=$('<div>').attr("class","rangeslider");
-    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"});
-    var SpanDemo=$('<span>').attr("id","demo");
+    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"+key});
+    var SpanDemo=$('<span>').attr("id","demo"+key);
     $(".slide_general").append(DivSlide);
     $(DivSlide).append(inputSlide);
     $(DivSlide).append(SpanDemo);
-    var rangeslider = document.getElementById("sliderRange"); 
-    var output = document.getElementById("demo"); 
+    var rangeslider = document.getElementById("sliderRange"+key); 
+    var output = document.getElementById("demo"+key); 
     output.innerHTML = rangeslider.value;     
     rangeslider.oninput = function() { 
       output.innerHTML = this.value; 
