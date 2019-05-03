@@ -30,6 +30,10 @@
   padding-left:1%;
   margin-top: 10px;
 }
+.span_nombre{
+  float: left;
+  margin-top: 50px;
+}
 .center_panel{
   max-width: 70%;
   margin-top: 20px;
@@ -45,12 +49,11 @@
 
 /*Slide Bar*/
 .slide_general{
-  margin-top: 15px;
+  margin-top: 25px;
 }
 .rangeslider{ 
     width: 110%; 
     float: left;
-    margin-top: 20px;
     border-radius: 5px;
 } 
   
@@ -58,6 +61,8 @@
     -webkit-appearance: none; 
     background:  #212f3c; 
     width: 50%; 
+    margin-top: 12px;
+    margin-bottom: 12px;
     height: 15px; 
     opacity: 2; 
     border-radius: 5px;
