@@ -7,26 +7,26 @@
             LOGOOOOO
         </div>
         <div class="col-sm-8" id="Botonera">
-            <button>
-                <i class="material-icons hvr-glow" style="float:left">play_arrow</i>
+            <button id="play">
+                <i class="material-icons" style="float:left">play_arrow</i>
             </button>
-            <button>
-                <i class="material-icons hvr-glow" style="float:right">stop</i>
-            </button>
-            &nbsp;
-            <button>
-                <i id="limpiar" class="material-icons" style="float:left">clear</i>
+            <button id="stop">
+                <i class="material-icons" style="float:right">stop</i>
             </button>
             &nbsp;
-            <button>
-                <i class="material-icons hvr-glow" style="float:right">folder</i>
-            </button>
-            <button>
-                <i class="material-icons hvr-glow" style="float:left">save</i>
+            <button id="limpiar">
+                <i class="material-icons" style="float:left">clear</i>
             </button>
             &nbsp;
-            <button>
-                <i class="material-icons hvr-glow" style="float:right">music_note</i>
+            <button id="subir_json">
+                <i class="material-icons" style="float:right">folder</i>
+            </button>
+            <button id="descargar_json">
+                <i class="material-icons" style="float:left">save</i>
+            </button>
+            &nbsp;
+            <button id="subir_sonido">
+                <i class="material-icons" style="float:right">music_note</i>
             </button>
         </div>
     </div>
@@ -54,7 +54,7 @@
 
                 for (const key in datos_JSON) {
                     var nombre_audio = datos_JSON[key]["nombre"];
-                    var agregar_span = $("<span>").attr("class","hvr-glow").attr("nombre",nombre_audio).text(nombre_audio).css("margin-top","10px");
+                    var agregar_span = $("<span>").attr("nombre",nombre_audio).text(nombre_audio).css("margin-top","10px");
                     $("#nombre_audios").append("<br>");
 
                     $("#nombre_audios").append(agregar_span);
