@@ -58,7 +58,7 @@
                     $("#nombre_audios").append("<br>");
 
                     $("#nombre_audios").append(agregar_span);
-                    		crearCasillas(nombre_audio, key);
+                    crearCasillas(nombre_audio, key);
 
                 }
 				
