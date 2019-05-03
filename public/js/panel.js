@@ -15,14 +15,18 @@ function clickCasilla(){
         $( this ).css("background-color","cyan");
         
         var nombre_cancion = $(this).attr("nombre");
-        Sonido(nombre_cancion);
+        var pista = $(this).attr("pista");
+        var porcentaje_volumen = $("#demo"+pista).text();
+        Sonido(nombre_cancion, porcentaje_volumen);
     }
     
 }
 
-function Sonido (nombre_cancion){
+function Sonido (nombre_cancion, porcentaje_volumen){
     var ruta_audios = "/storage/";
     var audio = new Audio(ruta_audios+nombre_cancion);
+    var porcentaje_volumen_exacto = porcentaje_volumen/100;
+    audio.volume = porcentaje_volumen_exacto;
     audio.play();
 }
 
@@ -34,10 +38,10 @@ function limpiarCasillas (){
 
 function crearCasillas(nombre_audio, key){
     var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
-    var Teclas=$("<div>").attr("class","Teclas");
+    var Teclas=$("<div>").attr("class","Teclas").attr("pista",key);
     $(".center_panel").append(Teclas);
     for (var i=0; i<=15; i++) {
-        var Tecla=$('<div>').attr("class","Tecla hvr-glow").attr("nombre",nombre_audio).css(CssCasilla);      
+        var Tecla=$('<div>').attr("class","Tecla hvr-glow").attr("nombre",nombre_audio).attr("pista",key).css(CssCasilla);      
         $(Teclas).append(Tecla);
        }
        crearSlide(key);
@@ -46,8 +50,8 @@ function crearCasillas(nombre_audio, key){
 
 function crearSlide(key){
     var DivSlide=$('<div>').attr("class","rangeslider");
-    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"+key});
-    var SpanDemo=$('<span>').attr("id","demo"+key);
+    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"+key,"pista":key});
+    var SpanDemo=$('<span>').attr("id","demo"+key).attr("pista",key);
     $(".slide_general").append(DivSlide);
     $(DivSlide).append(inputSlide);
     $(DivSlide).append(SpanDemo);

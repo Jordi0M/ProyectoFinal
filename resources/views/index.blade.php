@@ -54,7 +54,11 @@
 
                 for (const key in datos_JSON) {
                     var nombre_audio = datos_JSON[key]["nombre"];
+<<<<<<< HEAD
                     var agregar_span = $("<span>").attr("nombre",nombre_audio).attr("class","span_nombre").text(nombre_audio).css("margin-top","10px");
+=======
+                    var agregar_span = $("<span>").attr("nombre",nombre_audio).attr("pista",key).text(nombre_audio).css("margin-top","10px");
+>>>>>>> fc5ffec8f0bf77a543c30443d3e22082187bb93f
                     $("#nombre_audios").append("<br>");
 
                     $("#nombre_audios").append(agregar_span);
