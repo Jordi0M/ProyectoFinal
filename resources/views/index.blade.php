@@ -1,3 +1,4 @@
+@include('layouts.app')
 @extends('layouts.master')
 
 @section('contenido')
