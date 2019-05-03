@@ -48,12 +48,12 @@ function crearSlide(){
     var DivSlide=$('<div>').attr("class","rangeslider");
     var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"});
     var SpanDemo=$('<span>').attr("id","demo");
-    $(".Teclas").append(DivSlide);
+    $(".slide_general").append(DivSlide);
     $(".rangeslider").append(inputSlide);
     $(".rangeslider").append(SpanDemo);
     var rangeslider = document.getElementById("sliderRange"); 
     var output = document.getElementById("demo"); 
-        output.innerHTML = rangeslider.value;     
+    output.innerHTML = rangeslider.value;     
     rangeslider.oninput = function() { 
       output.innerHTML = this.value; 
     } 

@@ -1,3 +1,6 @@
+.container{
+  border-radius: 5px;
+}
 /* SHADOW/GLOW TRANSITIONS */
 /* Glow */
 .hvr-glow {
@@ -21,6 +24,16 @@
   height:40px;
   align-content: center;
   }
+#Botonera{
+  text-align:center; 
+  background-color:yellow; 
+  padding-left:1%;
+  margin-top: 10px;
+}
+.center_panel{
+  max-width: 70%;
+  margin-top: 20px;
+}
 .Teclas{
   margin-top: 5px;
   margin-left: 50px;
@@ -30,12 +43,14 @@
   margin: 2px;
  }
 
- /*Slide Bar*/
- .rangeslider{ 
-    width: 20%; 
+/*Slide Bar*/
+.slide_general{
+  margin-top: 15px;
+}
+.rangeslider{ 
+    width: 110%; 
     float: left;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 20px;
     border-radius: 5px;
 } 
   
@@ -45,7 +60,7 @@
     width: 50%; 
     height: 20px; 
     opacity: 2; 
-        border-radius: 5px;
+    border-radius: 5px;
 
    } 
   
