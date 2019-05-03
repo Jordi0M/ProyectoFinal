@@ -7,7 +7,7 @@ function clickCasilla(){
 
     if ($(this).hasClass('hover')){
         $( this ).removeClass( "hover" );
-        $( this ).css("background-color","");
+        $( this ).css("background-color","#686868");
         
         
     }else{
@@ -27,18 +27,18 @@ function Sonido (nombre_cancion){
 }
 
 function limpiarCasillas (){
-    $( ".hover" ).css("background-color","");
+    $( ".hover" ).css("background-color","#686868");
     $( ".hover" ).removeClass( "hover" );
 }
 
 
-function crearCasillas(){
+function crearCasillas(nombre_audio){
     var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
     var Teclas=$("<div>").attr("class","Teclas");
     $(".center_panel").append(Teclas);
     for (var i=0; i<=15; i++) {
-        var Tecla=$('<div>').attr("class","Tecla").css(CssCasilla);      
-        $(".Teclas").append(Tecla);
+        var Tecla=$('<div>').attr("class","Tecla hvr-glow").attr("nombre",nombre_audio).css(CssCasilla);      
+        $(Teclas).append(Tecla);
        }
        crearSlide();
     
@@ -49,8 +49,8 @@ function crearSlide(){
     var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"});
     var SpanDemo=$('<span>').attr("id","demo");
     $(".slide_general").append(DivSlide);
-    $(".rangeslider").append(inputSlide);
-    $(".rangeslider").append(SpanDemo);
+    $(DivSlide).append(inputSlide);
+    $(DivSlide).append(SpanDemo);
     var rangeslider = document.getElementById("sliderRange"); 
     var output = document.getElementById("demo"); 
     output.innerHTML = rangeslider.value;     
