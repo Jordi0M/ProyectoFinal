@@ -17,20 +17,13 @@ class AudiosController extends Controller
     }
 
     public function nuevoSonido(Request $request){
-        //return dd($request->all());
-        /*
-        if($request->hasFile('sonido')){
-            return "lo tiene";
-        }
-        else {
-            return "noper";
-        }
-        */////////////pruebas
-        $validator = Validator::make($request->all(), [
-            'sonido' => 'required|file|mimes:mp3,mp4,wav,mid',
+ 
+        $validator = Validator::make($request->file(), [
+            'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid'
                 ]);
 
         if($validator->fails()){
+            var_dump($validator->errors());
             return "mal";
             return redirect()->back()->withErrors($validator);
         }
