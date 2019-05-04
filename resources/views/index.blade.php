@@ -1,4 +1,6 @@
-@include('layouts.app')
+@include('layouts.app') {{--Esto es el nav del login--}}
+@include('modals/modal_nuevo_sonido')
+
 @extends('layouts.master')
 
 @section('contenido')
@@ -26,7 +28,7 @@
             </button>
             &nbsp;
             <button id="subir_sonido">
-                <i class="material-icons" style="float:right">music_note</i>
+                <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
             </button>
         </div>
     </div>

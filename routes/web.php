@@ -21,4 +21,5 @@ Route::get('/','AudiosController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/nuevo_sonido', 'AudiosController@nuevoSonido');

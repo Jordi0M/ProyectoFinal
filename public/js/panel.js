@@ -16,7 +16,7 @@ function clickCasilla(){
         
         var nombre_cancion = $(this).attr("nombre");
         var pista = $(this).attr("pista");
-        var porcentaje_volumen = $("#demo"+pista).text();
+        var porcentaje_volumen = $("#sliderRange"+pista).val();
         Sonido(nombre_cancion, porcentaje_volumen);
     }
     
