@@ -27,9 +27,18 @@
                 <i class="material-icons" style="float:left">save</i>
             </button>
             &nbsp;
-            <button id="subir_sonido">
-                <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
-            </button>
+            @auth
+                <button id="subir_sonido">
+                    <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
+                </button>
+            @endauth
+
+            @guest
+                <button id="subir_sonido" onclick="alert('Registrate o logueate para poder subir una cancion')">
+                    <i class="material-icons" style="float:right">music_note</i>
+                </button>
+            @endguest
+            
         </div>
     </div>
     <div class="row click_panel" style="background-color:gray">

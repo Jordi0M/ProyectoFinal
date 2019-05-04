@@ -28,7 +28,10 @@ class AudiosController extends Controller
             return redirect()->back()->withErrors($validator);
         }
         else {
-            return "bien";
+            $request->file('documento')->storeAs('public');
+            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
+            return view('index', compact('ListaAudios'));
+            $documento->nombre_inicial = $request->file('documento')->getClientOriginalName();
         }
 
     }
