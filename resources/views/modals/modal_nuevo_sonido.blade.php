@@ -17,7 +17,7 @@
                 </div> --}}
                    
                 <div class="modal-body">
-                    <form method="POST" action="/nuevo_sonido" id="form_modal_nuevo_sonido" enctype="multipart/form-data">
+                    <form method="POST" action="/nuevo_sonido/{{ Auth::user()->id }}" id="form_modal_nuevo_sonido" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div>   
                             {{-- <div class="form-group">
@@ -33,7 +33,7 @@
                             <div class="form-group" id="div_subir_sonido">
                                 <h3>Introduce el sonido</h3>
                                 <br>
-                                <input type="file" name="sonido" id="subida_nuevo_sonido" accept="audio/mp3, video/mp4, audio/wav, audio/mid">
+                                <input type="file" name="sonido" id="subida_nuevo_sonido" accept="mpga, audio/mp3, video/mp4, audio/wav, audio/mid">
                             </div>
                         </div>
                         <div class="modal-footer">

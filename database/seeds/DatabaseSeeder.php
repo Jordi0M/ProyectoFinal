@@ -30,10 +30,21 @@ class DatabaseSeeder extends Seeder
             5 => 'tom_low.wav',
         );
 
+        $canciones_sin_extension = array(
+            0 => 'kick',
+            1 => 'snare',
+            2 => 'tom',
+            3 => 'hit_hat',
+            4 => 'crash',
+            5 => 'tom_low',
+        );
+
         for ($i=0; $i<6; $i++){
             audios::create([
                 'id_usuario' =>	1,
-                'nombre'	 => $canciones[$i],
+                'nombre_original'	 => $canciones[$i],
+                'nombre_link'	 => $canciones[$i],
+                'nombre_mostrar'	 => $canciones_sin_extension[$i],
             ]);
         }
         var_dump("hecho");

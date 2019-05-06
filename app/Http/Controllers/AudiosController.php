@@ -16,7 +16,12 @@ class AudiosController extends Controller
         return view('index', compact('ListaAudios'));
     }
 
-    public function nuevoSonido(Request $request){
+    public function index_auntenticado($id = 1){
+        $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', $id)->get();
+        return view('index', compact('ListaAudios'));
+    }
+
+    public function nuevoSonido(Request $request, $id){
  
         $validator = Validator::make($request->file(), [
             'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid'
@@ -27,9 +32,17 @@ class AudiosController extends Controller
             return "mal";
             return redirect()->back()->withErrors($validator);
         }
-        else {
-            $request->file('sonido')->store('public');
-            return redirect()->back();
+        else {        
+            $sonido_a_almacenar = $request->file('sonido');
+            $sonido = new audios;
+
+            $sonido->id_usuario = $id;
+            $sonido->nombre_original = $sonido_a_almacenar->getClientOriginalName();
+            $sonido->nombre_link = $sonido_a_almacenar->store('public');
+            $sonido->nombre_mostrar = $request->input('nuevo_nombre_del_sonido');;
+            $sonido->save();
+            return $this->index_auntenticado($id);
+
             //->storeAs('public');
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
             return view('index', compact('ListaAudios'));
