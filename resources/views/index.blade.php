@@ -6,7 +6,7 @@
     <div class="row" style="background-color:gray">
         <div style="text-align:left" class="col-sm-2">
             LOGOOOOO
-            {{-- {{$NumeroPistas}} --}}
+            
         </div>
         <div class="col-sm-8" id="Botonera">
             <button id="play">
@@ -63,6 +63,7 @@
         //los cuales tambien los busca en la carpeta storage que estara en public
         document.addEventListener('DOMContentLoaded', function(){
                 var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
+                var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
                 for (const key in datos_JSON) {
                     var nombre_audio = datos_JSON[key]["nombre_link"];
@@ -74,8 +75,13 @@
                     $("#nombre_audios").append("<br>");
                     $("#nombre_audios").append(agregar_span);
                     crearCasillas(nombre_audio, key);
-
+                    
                 }
+
+                function pasarCasillas(){
+                    Recibir({!!$NumeroPistas!!});
+                }
+                $( "#play" ).on( "click",  pasarCasillas );
 				
 		});
     </script>

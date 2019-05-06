@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             0 => 'kick.mp3',
             1 => 'snare.mp3',
             2 => 'tom.wav',
-            3 => 'hit_hat.wav',
+            3 => 'hit_hat.mp3',
             4 => 'crash.mp3',
             5 => 'tom_low.wav',
         );

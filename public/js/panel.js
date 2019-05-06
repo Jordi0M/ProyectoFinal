@@ -1,6 +1,11 @@
+//variable global para poder parar el set interval
+var Loop;
+
+
 $( document ).ready(function() {
     $( ".hvr-glow" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
+    
 });
 
 function clickCasilla(){
@@ -63,8 +68,29 @@ function crearSlide(key){
     } 
 }
 
+function Recibir(Num){
+    var ArrPistas=[];
+    var ArrCasilla=[];
+    for (var i =0; i <=Num; i++) {        
+        ArrPistas.push($("[pista="+i+"]"));
+    }
 
+    for (var i = 2; i <= 17; i++) {
+        for (var z = 0; z <= Num-1; z++) {
+            //console.log(ArrPistas[z][i]);
+            if ($(ArrPistas[z][i]).hasClass('hover')){
+                console.log("d");
+                console.log(ArrPistas[z][i]);
+                playSonido(ArrPistas[z][i]);
+                //Sonido($(ArrPistas[z][i]).attr("nombre"), 100);
+            }
+        }
+    }
+}
 
+function playSonido(pista){
+    Loop = setInterval(Sonido($(pista).attr("nombre"), 100),2000);
 
+}
 
 
