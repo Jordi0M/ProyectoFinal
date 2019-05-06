@@ -43,10 +43,6 @@ class AudiosController extends Controller
             $sonido->save();
             return $this->index_auntenticado($id);
 
-            //->storeAs('public');
-            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
-            return view('index', compact('ListaAudios'));
-            $documento->nombre_inicial = $request->file('documento')->getClientOriginalName();
         }
 
     }
