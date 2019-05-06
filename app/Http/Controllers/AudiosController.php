@@ -8,23 +8,28 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\audios;
+use Auth;
 
 class AudiosController extends Controller
 {
     public function index(){
-        $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
-        return view('index', compact('ListaAudios'));
-    }
-
-    public function index_auntenticado($id = 1){
-        $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', $id)->get();
-        return view('index', compact('ListaAudios'));
+        if (Auth::user()) {
+            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
+            $NumeroPistas = $ListaAudios->count();
+            return view('index', compact('ListaAudios', 'NumeroPistas'));
+        }
+        else{
+            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
+            $NumeroPistas = $ListaAudios->count();
+            return view('index', compact('ListaAudios', 'NumeroPistas'));
+        }
+       
     }
 
     public function nuevoSonido(Request $request, $id){
  
         $validator = Validator::make($request->file(), [
-            'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid'
+            'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac'
                 ]);
 
         if($validator->fails()){
@@ -41,6 +46,7 @@ class AudiosController extends Controller
             $sonido->nombre_link = $sonido_a_almacenar->store('public');
             $sonido->nombre_mostrar = $request->input('nuevo_nombre_del_sonido');;
             $sonido->save();
+            return redirect()->back();
             return $this->index_auntenticado($id);
 
         }

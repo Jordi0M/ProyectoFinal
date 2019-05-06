@@ -33,7 +33,7 @@
                             <div class="form-group" id="div_subir_sonido">
                                 <h3>Introduce el sonido</h3>
                                 <br>
-                                <input type="file" name="sonido" id="subida_nuevo_sonido" accept="mpga, audio/mp3, video/mp4, audio/wav, audio/mid">
+                                <input type="file" name="sonido" id="subida_nuevo_sonido" accept="audio/mpga, audio/mp3, video/mp4, audio/wav, audio/mid, audio/aac">
                             </div>
                         </div>
                         <div class="modal-footer">

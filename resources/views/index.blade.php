@@ -6,6 +6,7 @@
     <div class="row" style="background-color:gray">
         <div style="text-align:left" class="col-sm-2">
             LOGOOOOO
+            {{-- {{$NumeroPistas}} --}}
         </div>
         <div class="col-sm-8" id="Botonera">
             <button id="play">
