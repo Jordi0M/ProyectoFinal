@@ -5,6 +5,7 @@ var Loop;
 $( document ).ready(function() {
     $( ".hvr-glow" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
+    $( "#stop" ).on( "click",  pararSonido );
     
 });
 
@@ -89,8 +90,13 @@ function Recibir(Num){
 }
 
 function playSonido(pista){
-    Loop = setInterval(Sonido($(pista).attr("nombre"), 100),2000);
 
+    Loop = setInterval(function(){
+        Sonido($(pista).attr("nombre"),100);
+    },2000)
 }
 
-
+function pararSonido(){
+    console.log(Loop);
+    clearInterval(Loop);
+}
