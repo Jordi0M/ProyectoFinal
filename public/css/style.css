@@ -31,6 +31,10 @@
   margin-top: 10px;
 }
 
+.Teclas{
+  margin-left: 50%;
+ }
+
 .Tecla{
   float: left;
   margin: 2px;
@@ -39,19 +43,26 @@
 /*Slide Bar*/
 .slide_general{
   margin-top: 25px;
+  margin-left: 5%;
+}
+.nombres_pistas{
+  padding-right: 11%;
 }
 .rangeslider{ 
     width: 110%; 
     float: left;
     border-radius: 5px;
 } 
+.num_volumen{
+  margin-left: 5px;
+}
   
 .myslider { 
     -webkit-appearance: none; 
     background:  #212f3c; 
     width: 50%; 
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 14.5px;
+    margin-left: 25%;
     height: 15px; 
     opacity: 2; 
     border-radius: 5px;

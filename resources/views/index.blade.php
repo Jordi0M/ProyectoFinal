@@ -9,33 +9,33 @@
             
         </div>
         <div class="col-sm-8" id="Botonera">
-            <button id="play">
+            <button id="play" title="Click para Play">
                 <i class="material-icons" style="float:left">play_arrow</i>
             </button>
-            <button id="stop">
+            <button id="stop" title="Click para Stop">
                 <i class="material-icons" style="float:right">stop</i>
             </button>
             &nbsp;
-            <button id="limpiar">
+            <button id="limpiar" title="Click para limpiar las casillas">
                 <i class="material-icons" style="float:left">clear</i>
             </button>
             &nbsp;
-            <button id="subir_json">
+            <button id="subir_json" title="Click para subir el archivo generado">
                 <i class="material-icons" style="float:right">folder</i>
             </button>
-            <button id="descargar_json">
+            <button id="descargar_json" title="Click para generar un archivo">
                 <i class="material-icons" style="float:left">save</i>
             </button>
             &nbsp;
             @auth
                 @include('modals/modal_nuevo_sonido')
-                <button id="subir_sonido">
+                <button id="subir_sonido" title="Click para subir una cancion">
                     <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
                 </button>
             @endauth
 
             @guest
-                <button id="subir_sonido" onclick="alert('Registrate o logueate para poder subir una cancion')">
+                <button id="subir_sonido" title="Click para subir una cancion" onclick="alert('Registrate o logueate para poder subir una cancion')">
                     <i class="material-icons" style="float:right">music_note</i>
                 </button>
             @endguest

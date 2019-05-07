@@ -22,10 +22,10 @@ function crearPanel(datos_JSON){
         nombre_audio = nombre_audio.replace('public/', '');
         //como se guarda en la base de datos al inicio "public/", lo eliminaremos
 
-        var agregar_td = $("<td>").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
+        var agregar_td_nombres = $("<td>").attr("class","nombres_pistas").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
         
         var tr_pista = $("<tr>");
-        $(tr_pista).append(agregar_td);
+        $(tr_pista).append(agregar_td_nombres);
         $(tabla).append(tr_pista);
         
         crearCasillas(nombre_audio, key, tr_pista);
@@ -81,7 +81,7 @@ function crearCasillas(nombre_audio, key, tr_pista){
 function crearSlide(key, tr_pista){
     var DivSlide=$('<div>').attr("class","rangeslider");
     var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"70","class":"myslider","id":"sliderRange"+key,"pista":key});
-    var SpanDemo=$('<span>').attr("id","demo"+key).attr("pista",key);
+    var SpanDemo=$('<span>').attr("class","num_volumen").attr("id","demo"+key).attr("pista",key);
     $(tr_pista).append(DivSlide);
     $(DivSlide).append(inputSlide);
     $(DivSlide).append(SpanDemo);
