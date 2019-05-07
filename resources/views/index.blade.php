@@ -42,18 +42,10 @@
             
         </div>
     </div>
-    <div class="row click_panel" style="background-color:gray">
-        
-    	<div class="col-sm-1" id="nombre_audios">
-    	
-    		
-    	</div>
-    	<div class="col-sm-9 center_panel" >
-  
 
-  
-    	</div> 
-		<div class="col-sm-2 slide_general">
+    <div class="row click_panel" style="background-color:gray">
+
+		<div class="slide_general">
 			
 		</div>
 
@@ -64,8 +56,6 @@
         document.addEventListener('DOMContentLoaded', function(){
                 var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
                 var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
-
-                
 
                 crearPanel(datos_JSON);
 

@@ -9,18 +9,28 @@ $( document ).ready(function() {
     
 });
 
+
 function crearPanel(datos_JSON){
+
+    var tabla = $("<table id=tabla_panel>");
+
+    $(".slide_general").append(tabla);
+
     for (const key in datos_JSON) {
         var nombre_audio = datos_JSON[key]["nombre_link"];
         var nombre_mostrar = datos_JSON[key]["nombre_mostrar"];
         nombre_audio = nombre_audio.replace('public/', '');
         //como se guarda en la base de datos al inicio "public/", lo eliminaremos
 
-        var agregar_span = $("<span>").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
-        $("#nombre_audios").append("<br>");
-        $("#nombre_audios").append(agregar_span);
-        crearCasillas(nombre_audio, key);
-    
+        var agregar_td = $("<td>").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
+        
+        var tr_pista = $("<tr>");
+        $(tr_pista).append(agregar_td);
+        $(tabla).append(tr_pista);
+        
+        crearCasillas(nombre_audio, key, tr_pista);
+        crearSlide(key, tr_pista);
+ 
     }
 }
 
@@ -57,30 +67,29 @@ function limpiarCasillas (){
 }
 
 
-function crearCasillas(nombre_audio, key){
+function crearCasillas(nombre_audio, key, tr_pista){
     var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
-    var Teclas=$("<div>").attr("class","Teclas").attr("pista",key);
-    $(".center_panel").append(Teclas);
+    var Teclas=$("<td>").attr("class","Teclas").attr("pista",key);
+    $(tr_pista).append(Teclas)
+    //$(".center_panel").append(Teclas);
     for (var i=0; i<=15; i++) {
         var Tecla=$('<div>').attr("class","Tecla hvr-glow").attr("nombre",nombre_audio).attr("pista",key).css(CssCasilla);      
         $(Teclas).append(Tecla);
-       }
-       crearSlide(key);
-    
+    }
 }
 
-function crearSlide(key){
+function crearSlide(key, tr_pista){
     var DivSlide=$('<div>').attr("class","rangeslider");
-    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"10","class":"myslider","id":"sliderRange"+key,"pista":key});
+    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"70","class":"myslider","id":"sliderRange"+key,"pista":key});
     var SpanDemo=$('<span>').attr("id","demo"+key).attr("pista",key);
-    $(".slide_general").append(DivSlide);
+    $(tr_pista).append(DivSlide);
     $(DivSlide).append(inputSlide);
     $(DivSlide).append(SpanDemo);
     var rangeslider = document.getElementById("sliderRange"+key); 
     var output = document.getElementById("demo"+key); 
     output.innerHTML = rangeslider.value;     
     rangeslider.oninput = function() { 
-      output.innerHTML = this.value; 
+    output.innerHTML = this.value; 
     } 
 }
 
@@ -104,13 +113,14 @@ function Recibir(Num){
 }
 
 function playSonido(pista){
+    var porcentaje_volumen = $("#sliderRange"+$(pista).attr("pista")).val();
     Loop = setInterval(function(){
-        Sonido($(pista).attr("nombre"),100);
+        Sonido($(pista).attr("nombre"),porcentaje_volumen);
     },2000)
 }
 
 function pararSonido(){
-    console.log(Loop);
+
     for (var i =0; i <= Loop; i++) {
             console.log(i);
             clearInterval(i);

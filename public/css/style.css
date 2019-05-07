@@ -30,18 +30,7 @@
   padding-left:1%;
   margin-top: 10px;
 }
-.span_nombre{
-  float: left;
-  margin-top: 50px;
-}
-.center_panel{
-  max-width: 70%;
-  margin-top: 20px;
-}
-.Teclas{
-  margin-top: 5px;
-  margin-left: 50px;
-}
+
 .Tecla{
   float: left;
   margin: 2px;
@@ -73,7 +62,7 @@
 .myslider::-webkit-slider-thumb { 
     -webkit-appearance: none; 
     cursor: pointer; 
-    background: #154360  ; 
+    background: #154360; 
     width: 5%; 
     height: 15px; 
 } 
