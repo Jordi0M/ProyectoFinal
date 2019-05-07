@@ -1,5 +1,5 @@
 //variable global para poder parar el set interval
-var Loop;
+var Loop=[];
 
 
 $( document ).ready(function() {
@@ -77,10 +77,10 @@ function Recibir(Num){
     }
 
     for (var i = 2; i <= 17; i++) {
+        
         for (var z = 0; z <= Num-1; z++) {
             //console.log(ArrPistas[z][i]);
             if ($(ArrPistas[z][i]).hasClass('hover')){
-                console.log(ArrPistas[z][i]);
                 playSonido(ArrPistas[z][i]);
                 //Sonido($(ArrPistas[z][i]).attr("nombre"), 100);
             }
@@ -89,7 +89,6 @@ function Recibir(Num){
 }
 
 function playSonido(pista){
-
     Loop = setInterval(function(){
         Sonido($(pista).attr("nombre"),100);
     },2000)
@@ -97,5 +96,9 @@ function playSonido(pista){
 
 function pararSonido(){
     console.log(Loop);
-    clearInterval(Loop);
+    for (var i =0; i <= Loop; i++) {
+            console.log(i);
+            clearInterval(i);
+
+        }
 }
