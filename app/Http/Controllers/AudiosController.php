@@ -31,7 +31,7 @@ class AudiosController extends Controller
 
         if ($request->ajax()) {
       
-            return response()->json($request->all());
+            //return response()->json($request->all());
             /*
             $validator = Validator::make($request->all(), [
                 'nuevo_nombre_del_sonido' => 'required',
@@ -53,12 +53,15 @@ class AudiosController extends Controller
 
             $sonido->id_usuario = $id;
             $sonido->nombre_original = $sonido_a_almacenar->getClientOriginalName();
-            $sonido->nombre_link = $sonido_a_almacenar->store('public');
+            //$sonido->nombre_link = $sonido_a_almacenar->store('public');
             $sonido->nombre_mostrar = $request->input('nuevo_nombre_del_sonido');
-            $sonido->save();
+            //$sonido->save();
 
-            
-            
+            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
+            $NumeroPistas = $ListaAudios->count();
+            return response()->json(view('bladesajax.panel', compact('ListaAudios', 'NumeroPistas')));    
+            //return view('index', compact('ListaAudios', 'NumeroPistas'));
+
             
             //return redirect()->back();
             //return $this->index_auntenticado($id);

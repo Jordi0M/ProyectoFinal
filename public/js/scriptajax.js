@@ -1,3 +1,5 @@
+/*
+//olvidado
 $( document ).ready(function() {
     $('#form_modal_nuevo_sonido').submit(function(e){
         e.preventDefault();
@@ -20,6 +22,7 @@ $( document ).ready(function() {
             dataType: 'json',
             success: function(data){
                 $('#modal_nuevo_sonido').modal('hide');
+                //$(".click_panel").html(data);
                 console.log(data);
             },
             error: function(xhr, status, error) {
@@ -29,3 +32,4 @@ $( document ).ready(function() {
         })
     });
 });
+*/
