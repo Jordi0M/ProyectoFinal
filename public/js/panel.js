@@ -80,7 +80,6 @@ function Recibir(Num){
         for (var z = 0; z <= Num-1; z++) {
             //console.log(ArrPistas[z][i]);
             if ($(ArrPistas[z][i]).hasClass('hover')){
-                console.log("d");
                 console.log(ArrPistas[z][i]);
                 playSonido(ArrPistas[z][i]);
                 //Sonido($(ArrPistas[z][i]).attr("nombre"), 100);

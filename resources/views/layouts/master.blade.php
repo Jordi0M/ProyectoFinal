@@ -15,6 +15,7 @@
 
     <!-- JS propio -->
     <script src="/js/panel.js"></script>
+    <script src="/js/scriptajax.js"></script>
 
     <!-- CSS propio -->
     <link rel="stylesheet" href="/css/style.css">
