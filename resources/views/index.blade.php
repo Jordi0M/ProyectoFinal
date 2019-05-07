@@ -45,7 +45,7 @@
 
     <div class="row click_panel" style="background-color:gray">
 
-		<div class="slide_general">
+		<div class="slide_general" id="slide_general">
 			
 		</div>
 
@@ -58,6 +58,22 @@
                 var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
                 crearPanel(datos_JSON);
+                /*
+                ////////Local Storage (guardar la informacion)
+                if(typeof(Storage) !== "undefined") {
+                    if (localStorage.pantalla2) {
+                        
+                        console.log(localStorage.getItem('pantalla2'));
+                        $("#slide_general").html(localStorage.pantalla2);
+                    } 
+                    else {
+                        
+                        localStorage.pantalla2 = $("#slide_general").html();
+                    }
+                } else {
+                        document.getElementById("#slide_general").innerHTML = "Sorry, your browser does not support web storage...";
+                }
+                */
 
                 function pasarCasillas(){
                     Recibir({!!$NumeroPistas!!});

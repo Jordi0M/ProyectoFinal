@@ -120,10 +120,8 @@ function playSonido(pista){
 }
 
 function pararSonido(){
-
     for (var i =0; i <= Loop; i++) {
-            console.log(i);
-            clearInterval(i);
-
-        }
+        clearInterval(i);
+    }
 }
+
