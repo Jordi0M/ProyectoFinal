@@ -1,1 +1,0 @@
-<script>crearPanel();</script>

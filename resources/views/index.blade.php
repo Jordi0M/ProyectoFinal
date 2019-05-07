@@ -65,22 +65,9 @@
                 var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
                 var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
-                function crearPanel(){
-                    for (const key in datos_JSON) {
-                        var nombre_audio = datos_JSON[key]["nombre_link"];
-                        var nombre_mostrar = datos_JSON[key]["nombre_mostrar"];
-                        nombre_audio = nombre_audio.replace('public/', '');
-                        //como se guarda en la base de datos al inicio "public/", lo eliminaremos
+                
 
-                        var agregar_span = $("<span>").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
-                        $("#nombre_audios").append("<br>");
-                        $("#nombre_audios").append(agregar_span);
-                        crearCasillas(nombre_audio, key);
-                    
-                    }
-                }
-
-                crearPanel();
+                crearPanel(datos_JSON);
 
                 function pasarCasillas(){
                     Recibir({!!$NumeroPistas!!});
