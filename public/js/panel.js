@@ -99,11 +99,17 @@ function limpiarCasillas (){
 
 
 function crearCasillas(key, tr_pista){
-    var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
+    //var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
     var Teclas=$("<td>").attr("class","Teclas").attr("numero_fila",key);
     $(tr_pista).append(Teclas)
 
     for (var i=0; i<=15; i++) {
+        if (tracks[key]["casillas"][i] == 0) {
+            var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
+        }
+        else{
+            var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'cyan'};
+        }
         var Tecla=$('<div>').attr("class","Tecla").attr("pista",key).attr("casilla_por_filas",i).css(CssCasilla);      
         $(Teclas).append(Tecla);
     }
@@ -111,7 +117,8 @@ function crearCasillas(key, tr_pista){
 
 function crearSlide(key, tr_pista){
     var DivSlide=$('<div>').attr("class","rangeslider");
-    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"70","class":"myslider"});
+    var volumen_track = tracks[key]["volumen"];
+    var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":volumen_track,"class":"myslider"});
     /*
     , "pista_volumen":key
     */
@@ -125,12 +132,13 @@ function crearSlide(key, tr_pista){
     output.innerHTML = rangeslider.value;     
     rangeslider.oninput = function() {
     output.innerHTML = this.value; 
-    tracks[key]["volumen"] = this.value;
+    tracks[key]["volumen"] = parseInt(this.value);
     } 
 }
 
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
+
     var ArrPistas=[];
     
     for (var i =0; i <=numero_de_tracks; i++) {        
@@ -147,13 +155,21 @@ function pasarDatosAPlaySonido(){
             }
         }
     }
+
+    for (var i = 0; i <= 15; i++) {
+        for (var z = 0; z < numero_de_tracks; z++) {
+            casilla_iluminada = tracks[z]["casillas"][i];
+            if (casilla_iluminada == 1){
+                playSonido(tracks[z]);
+            }
+        }
+    }
 }
 
-function playSonido(pista){
-    console.log(pista);
-    var num_pista = $(pista).attr("pista");
-    var porcentaje_volumen = tracks[num_pista]["volumen"];
-    var nombre = tracks[num_pista]["audio"];
+function playSonido(track){
+    
+    var porcentaje_volumen = track["volumen"];
+    var nombre = track["audio"];
     Loop = setInterval(function(){
         Sonido(nombre,porcentaje_volumen);
     },2000)
