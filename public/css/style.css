@@ -18,15 +18,33 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   }
 
+.Botons{
+  padding-bottom: 5px;
+  margin-top: 10px;
+}
 .material-icons{
+  padding-top: 8px;
   margin-top: 6px;
   width:45px ;
   height:45px;
   align-content: center;
   }
+.Tempo-name{
+  margin-left: 5px;
+
+}
+
+.input-tempo{
+  border:solid #545454 3px; 
+  margin-bottom: 5px;
+  margin-left: 5px;
+  width: 50px;
+  padding-bottom: 5px;
+}
 #Botonera{
+  border:solid #545454 3px; 
   text-align:center; 
-  background-color:yellow; 
+  background-color:#696969; 
   padding-left:1%;
   margin-top: 10px;
 }

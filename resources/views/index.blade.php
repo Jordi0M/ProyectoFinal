@@ -9,37 +9,41 @@
             
         </div>
         <div class="col-sm-8" id="Botonera">
-            <button id="play" title="Click para Play">
+            <button class="Botons" id="play" title="Click para Play">
                 <i class="material-icons" style="float:left">play_arrow</i>
             </button>
-            <button id="stop" title="Click para Stop">
+            <button class="Botons" id="stop" title="Click para Stop">
                 <i class="material-icons" style="float:right">stop</i>
             </button>
             &nbsp;
-            <button id="limpiar" title="Click para limpiar las casillas">
+            <button class="Botons" id="limpiar" title="Click para limpiar las casillas">
                 <i class="material-icons" style="float:left">clear</i>
             </button>
             &nbsp;
-            <button id="subir_json" title="Click para subir el archivo generado">
+            <button class="Botons" id="subir_json" title="Click para subir el archivo generado">
                 <i class="material-icons" style="float:right">folder</i>
             </button>
-            <button id="descargar_json" title="Click para generar un archivo">
+            <button class="Botons" id="descargar_json" title="Click para generar un archivo">
                 <i class="material-icons" style="float:left">save</i>
             </button>
             &nbsp;
             @auth
                 @include('modals/modal_nuevo_sonido')
-                <button id="subir_sonido" title="Click para subir una cancion">
+                <button class="Botons" id="subir_sonido" title="Click para subir una cancion">
                     <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
                 </button>
             @endauth
 
             @guest
-                <button id="subir_sonido" title="Click para subir una cancion" onclick="alert('Registrate o logueate para poder subir una cancion')">
+                <button class="Botons" id="subir_sonido" title="Click para subir una cancion" onclick="alert('Registrate o logueate para poder subir una cancion')">
                     <i class="material-icons" style="float:right">music_note</i>
                 </button>
             @endguest
-            
+                    <i class="Tempo-name">Tempo</i>
+                    <input class="input-tempo" id="input-metro" type="number" name="bpm" value="80" min="40" max="240">
+                    <!--<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a>
+                    <a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a>-->
+                    <span>bpm</span> 
         </div>
     </div>
 
