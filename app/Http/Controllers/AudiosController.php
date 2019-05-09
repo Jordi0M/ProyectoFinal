@@ -26,48 +26,45 @@ class AudiosController extends Controller
         }
        
     }
-
-    public function nuevoSonido(NuevoSonidoRequest $request, $id){
+    //Hay errores al usar el Request "NuevoSonidoRequest"
+    public function nuevoSonido(Request $request, $id){
 
         if ($request->ajax()) {
       
             //return response()->json($request->all());
-            /*
+            
             $validator = Validator::make($request->all(), [
                 'nuevo_nombre_del_sonido' => 'required',
                 'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac'
                     ]);
             
             if($validator->fails()){
-                //var_dump($validator->errors());
-                return response()->json($validator->errors());
+                return response()->json("Error en el formato", 404); // Status code here
+                //return response()->json($validator->errors());
                 //return redirect()->back()->withErrors($validator);
             }
-            */
-            //else {     
-
-
+            
+            else {     
 
             $sonido_a_almacenar = $request->file('sonido');
             $sonido = new audios;
 
             $sonido->id_usuario = $id;
             $sonido->nombre_original = $sonido_a_almacenar->getClientOriginalName();
-            //$sonido->nombre_link = $sonido_a_almacenar->store('public');
+            $sonido->nombre_link = $sonido_a_almacenar->store('public');
             $sonido->nombre_mostrar = $request->input('nuevo_nombre_del_sonido');
-            //$sonido->save();
+            $sonido->save();
 
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
             $NumeroPistas = $ListaAudios->count();
-            return response()->json(view('bladesajax.panel', compact('ListaAudios', 'NumeroPistas')));    
+            return response()->json(view('bladesajax.panel', compact('ListaAudios', 'NumeroPistas'))->render());    
             //return view('index', compact('ListaAudios', 'NumeroPistas'));
 
             
             //return redirect()->back();
             //return $this->index_auntenticado($id);
     
-
-            //}
+            }
         }        
     }
 }
