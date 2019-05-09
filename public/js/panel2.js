@@ -123,17 +123,17 @@ function crearSlide(key, tr_pista){
     } 
 }
 
-function pasarDatosAPlaySonido(Num){
-    var numero_de_tracks;
-    console.log(tracks.length);
+function pasarDatosAPlaySonido(){
+    var numero_de_tracks = tracks.length;
     var ArrPistas=[];
-    for (var i =0; i <=Num; i++) {        
+    
+    for (var i =0; i <=numero_de_tracks; i++) {        
         ArrPistas.push($("[pista="+i+"]"));
     }
 
     for (var i = 0; i <= 15; i++) {
         
-        for (var z = 0; z <= Num-1; z++) {
+        for (var z = 0; z <= numero_de_tracks-1; z++) {
             //console.log(ArrPistas[z][i]);
             if ($(ArrPistas[z][i]).hasClass('hover')){
                 playSonido(ArrPistas[z][i]);
