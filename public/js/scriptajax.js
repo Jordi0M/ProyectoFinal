@@ -23,6 +23,7 @@ $( document ).ready(function() {
                 success: function(data){
                     $('#modal_nuevo_sonido').modal('hide');
                     $( '.modal-backdrop' ).remove();
+                    $(".slide_general").html("");
                     $(".slide_general").html(data);
                 },
                 error: function(data) {

@@ -51,38 +51,21 @@
 
 		<div class="slide_general" id="slide_general">
 			
+        </div>
+        <div class="slide_general" id="slide_general">
+			
 		</div>
 
     </div>
     <script>
-        //Este script añade en el div con id "nombre_audios", los audios que encuentre en la base de datos
-        //los cuales tambien los busca en la carpeta storage que estara en public
-        document.addEventListener('DOMContentLoaded', function(){
-                var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
-                var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
-                crearPanel(datos_JSON);
+        var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
+        var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
-                var tracks = [];
-
-                for (const key in datos_JSON) {
-                    var track = {
-                        nombre : datos_JSON[key]["nombre_mostrar"],
-                        volumen : 70,
-                        audio : datos_JSON[key]["nombre_link"],
-                        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                    };   
-                    //tracks.push(track);
-                    tracks.push(track);
-                   
-                }
-                console.log(tracks);
-
-                function pasarCasillas(){
-                    Recibir({!!$NumeroPistas!!});
-                }
-                $( "#play" ).on( "click",  pasarCasillas );
+        //crearPanel(datos_JSON);
+    
+        datosTracks(datos_JSON);
+        //crearPanel2(tracks);
 				
-		});
     </script>
 @endsection

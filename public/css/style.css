@@ -3,7 +3,7 @@
 }
 /* SHADOW/GLOW TRANSITIONS */
 /* Glow */
-.hvr-glow {
+.Tecla {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -14,7 +14,7 @@
     -webkit-transition-property: box-shadow;
     transition-property: box-shadow;
   }
-  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+  .Tecla:hover, .Tecla:focus, .Tecla:active {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   }
 
