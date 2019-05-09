@@ -63,6 +63,6 @@
         var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
   
         datosTracks("#slide_general");
-				
+    
     </script>
 @endsection

@@ -4,21 +4,36 @@ var tracks = [];
 
 //añade a la array global los datos de cada track
 function datosTracks(){
-    tracks = [];
-    for (const key in datos_JSON) {
-        var track = {
-            nombre : datos_JSON[key]["nombre_mostrar"],
-            volumen : 70,
-            audio : datos_JSON[key]["nombre_link"],
-            casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        };   
-        
-        //array de objetos
-        tracks.push(track);
 
-        //objeto de objetos
-        //tracks["track"+key] = track;     
+    ////////Local Storage (guardar la informacion)
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.local_tracks) {
+            tracks = JSON.parse(localStorage.local_tracks);
+        } 
+        else {
+
+            tracks = [];
+            for (const key in datos_JSON) {
+                var track = {
+                    nombre : datos_JSON[key]["nombre_mostrar"],
+                    volumen : 70,
+                    audio : datos_JSON[key]["nombre_link"],
+                    casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                };   
+                
+                //array de objetos
+                tracks.push(track);
+
+                //objeto de objetos
+                //tracks["track"+key] = track;     
+            }
+            //localStorage.local_tracks = tracks;
+        }
+    } else {
+            document.getElementById("#slide_general").innerHTML = "Sorry, your browser does not support web storage...";
     }
+
+    
     //crearemos el panel
     crearPanel();
 }
@@ -80,6 +95,8 @@ function clickCasilla(){
         var porcentaje_volumen = tracks[num_pista]["volumen"];
         Sonido(nombre_cancion, porcentaje_volumen);
     }    
+
+    localStorage.local_tracks = JSON.stringify(tracks);
     
 }
 
@@ -98,6 +115,7 @@ function limpiarCasillas (){
     for (const key in tracks) {
         tracks[key]["casillas"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     }
+    localStorage.local_tracks = JSON.stringify(tracks);
 }
 
 
@@ -136,6 +154,7 @@ function crearSlide(key, tr_pista){
     rangeslider.oninput = function() {
     output.innerHTML = this.value; 
     tracks[key]["volumen"] = parseInt(this.value);
+    localStorage.local_tracks = JSON.stringify(tracks);
     } 
 }
 
@@ -183,4 +202,3 @@ function pararSonido(){
         clearInterval(i);
     }
 }
-
