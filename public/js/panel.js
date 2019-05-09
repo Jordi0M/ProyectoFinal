@@ -95,6 +95,9 @@ function Sonido (nombre_cancion, porcentaje_volumen){
 
 function limpiarCasillas (){
     $( ".Tecla" ).css("background-color","#686868");
+    for (const key in tracks) {
+        tracks[key]["casillas"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    }
 }
 
 
