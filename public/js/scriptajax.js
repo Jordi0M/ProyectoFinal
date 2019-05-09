@@ -22,9 +22,9 @@ $( document ).ready(function() {
                 dataType: 'json',
                 success: function(data){
                     $('#modal_nuevo_sonido').modal('hide');
-                    $( '.modal-backdrop' ).remove();
-                    $(".slide_general").html("");
-                    $(".slide_general").html(data);
+                    $('#form_modal_nuevo_sonido')[0].reset();
+                    $( '.modal-backdrop' ).remove();//eliminamos el fondo oscuro que deja el modal (hay veces que no se va)
+                    $("#slide_general").html(data);
                 },
                 error: function(data) {
                     console.log(data.responseJSON);

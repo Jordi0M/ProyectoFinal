@@ -5,13 +5,8 @@
 
     //crearPanel(datos_JSON);
 
-    datosTracks(datos_JSON);
+    datosTracks();
     //crearPanel2(tracks);
-
-    function pasarCasillas(){
-        Recibir({!!$NumeroPistas!!});
-    }
-    $( "#play" ).on( "click",  pasarCasillas );
 
     $( ".Tecla" ).on( "click",  clickCasilla );
                 

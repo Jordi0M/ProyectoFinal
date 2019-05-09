@@ -52,7 +52,7 @@
 		<div class="slide_general" id="slide_general">
 			
         </div>
-        <div class="slide_general" id="slide_general">
+        <div class="slide_general" id="slide_general2">
 			
 		</div>
 
@@ -61,11 +61,8 @@
 
         var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
         var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
-
-        //crearPanel(datos_JSON);
-    
-        datosTracks(datos_JSON);
-        //crearPanel2(tracks);
+  
+        datosTracks("#slide_general");
 				
     </script>
 @endsection

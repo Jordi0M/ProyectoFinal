@@ -4,6 +4,7 @@ var tracks = [];
 
 //añade a la array global los datos de cada track
 function datosTracks(){
+    tracks = [];
     for (const key in datos_JSON) {
         var track = {
             nombre : datos_JSON[key]["nombre_mostrar"],
@@ -24,6 +25,7 @@ function datosTracks(){
 
 $( document ).ready(function() {
     $( ".Tecla" ).on( "click",  clickCasilla );
+    //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido );
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
@@ -39,10 +41,7 @@ function crearPanel(){
 
     for (const key in tracks) {
         
-        var nombre_audio = tracks[key]["audio"];
         var nombre_mostrar = tracks[key]["nombre"];
-        nombre_audio = nombre_audio.replace('public/', '');
-        //como se guarda en la base de datos al inicio "public/", lo eliminaremos
 
         var agregar_td_nombres = $("<td>").text(nombre_mostrar).css("margin-top","10px");
         
@@ -86,6 +85,8 @@ function clickCasilla(){
 
 function Sonido (nombre_cancion, porcentaje_volumen){
     var ruta_audios = "/storage/";
+    nombre_cancion = nombre_cancion.replace('public/', '');
+    //como se guarda en la base de datos al inicio "public/", lo eliminaremos
     var audio = new Audio(ruta_audios+nombre_cancion);
     var porcentaje_volumen_exacto = porcentaje_volumen/100;
     audio.volume = porcentaje_volumen_exacto;
@@ -111,6 +112,10 @@ function crearCasillas(key, tr_pista){
 function crearSlide(key, tr_pista){
     var DivSlide=$('<div>').attr("class","rangeslider");
     var inputSlide=$('<input>').attr({"type":"range","min":"0","max":"100","value":"70","class":"myslider"});
+    /*
+    , "pista_volumen":key
+    */
+    //posible atributo para cambiar el volumen al objeto
     var SpanNumVolumen=$('<span>').attr("class","num_volumen");
     $(tr_pista).append(DivSlide);
     $(DivSlide).append(inputSlide);
@@ -118,8 +123,9 @@ function crearSlide(key, tr_pista){
     var rangeslider = $(".myslider")[key];
     var output = $(".num_volumen")[key];
     output.innerHTML = rangeslider.value;     
-    rangeslider.oninput = function() { 
+    rangeslider.oninput = function() {
     output.innerHTML = this.value; 
+    tracks[key]["volumen"] = this.value;
     } 
 }
 
