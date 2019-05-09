@@ -62,81 +62,21 @@
                 var NumeroPistas = {!! json_encode($NumeroPistas, JSON_HEX_TAG) !!};
 
                 crearPanel(datos_JSON);
-                /*
-                ////////Local Storage (guardar la informacion)
-                if(typeof(Storage) !== "undefined") {
-                    if (localStorage.pantalla2) {
-                        
-                        console.log(localStorage.getItem('pantalla2'));
-                        $("#slide_general").html(localStorage.pantalla2);
-                    } 
-                    else {
-                        
-                        localStorage.pantalla2 = $("#slide_general").html();
-                    }
-                } else {
-                        document.getElementById("#slide_general").innerHTML = "Sorry, your browser does not support web storage...";
+
+                var tracks = [];
+
+                for (const key in datos_JSON) {
+                    var track = {
+                        nombre : datos_JSON[key]["nombre_mostrar"],
+                        volumen : 70,
+                        audio : datos_JSON[key]["nombre_link"],
+                        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    };   
+                    //tracks.push(track);
+                    tracks.push(track);
+                   
                 }
-                */
-
-                $( document ).ready(function(){
-
-                    $("#descargar_json").click(function(){
-                        genBlock()
-                    })
-                    
-                    $("#subir_json").click(function(){
-                        recorrerHijo("Teclas");
-                    })		
-
-                })
-
-                function recorrerHijo(classPadre){
-                
-                    var padre = "."+classPadre;
-                    
-                    $(padre).children().each(function(indice, elemento){
-                        //console.log(elemento);
-                        if (elemento.className !== ""){
-                            console.log("Mi padre es: "+classPadre+"  Soy el hijo: "+ elemento.className);
-                            recorrerHijo(elemento.className);
-                        }
-                    });
-                }
-                function genBlock(cnt_block){
-                    var elements = []
-                    
-                    recorrerHijo("Teclas");
-
-                    $(".Teclas div").each(function(index){           
-                        var objetoHijo = new Object();
-                        objetoHijo.class = $(this).attr("class");
-                        objetoHijo.style = $(this).attr("style");
-                        objetoHijo.text = $("." + objetoHijo.class).html();
-                        elements.push(objetoHijo);
-                    }) 
-                    console.log(elements)      
-                    
-                    //var obj = JSON.parse(elements);
-                    //console.log(obj)
-                    /*
-                    for (var i = 0; i < rows.length; i++) {
-                        obj['datos'].push({"nombre":rows[i].nombre,"acierto":rows[i].dato1,"fallo":rows[i].dato2});
-                    };
-                    */
-                    var obj = JSON.stringify(elements);
-                    console.log(obj)
-
-                    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(elements));
-
-                    var a = document.createElement('a');
-                    a.href = 'data:' + data;
-                    a.download = 'data.json';
-                    a.innerHTML = 'download JSON';
-
-                    var container = document.getElementById('slide_general');
-                    container.appendChild(a);
-                }
+                console.log(tracks);
 
                 function pasarCasillas(){
                     Recibir({!!$NumeroPistas!!});
