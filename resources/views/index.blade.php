@@ -75,6 +75,65 @@
                 }
                 */
 
+                $( document ).ready(function(){
+
+                    $("#descargar_json").click(function(){
+                        genBlock()
+                    })
+                    
+                    $("#subir_json").click(function(){
+                        recorrerHijo("Teclas");
+                    })		
+
+                })
+
+                function recorrerHijo(classPadre){
+                
+                    var padre = "."+classPadre;
+                    
+                    $(padre).children().each(function(indice, elemento){
+                        //console.log(elemento);
+                        if (elemento.className !== ""){
+                            console.log("Mi padre es: "+classPadre+"  Soy el hijo: "+ elemento.className);
+                            recorrerHijo(elemento.className);
+                        }
+                    });
+                }
+                function genBlock(cnt_block){
+                    var elements = []
+                    
+                    recorrerHijo("Teclas");
+
+                    $(".Teclas div").each(function(index){           
+                        var objetoHijo = new Object();
+                        objetoHijo.class = $(this).attr("class");
+                        objetoHijo.style = $(this).attr("style");
+                        objetoHijo.text = $("." + objetoHijo.class).html();
+                        elements.push(objetoHijo);
+                    }) 
+                    console.log(elements)      
+                    
+                    //var obj = JSON.parse(elements);
+                    //console.log(obj)
+                    /*
+                    for (var i = 0; i < rows.length; i++) {
+                        obj['datos'].push({"nombre":rows[i].nombre,"acierto":rows[i].dato1,"fallo":rows[i].dato2});
+                    };
+                    */
+                    var obj = JSON.stringify(elements);
+                    console.log(obj)
+
+                    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(elements));
+
+                    var a = document.createElement('a');
+                    a.href = 'data:' + data;
+                    a.download = 'data.json';
+                    a.innerHTML = 'download JSON';
+
+                    var container = document.getElementById('slide_general');
+                    container.appendChild(a);
+                }
+
                 function pasarCasillas(){
                     Recibir({!!$NumeroPistas!!});
                 }

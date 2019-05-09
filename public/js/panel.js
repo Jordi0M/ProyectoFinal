@@ -12,7 +12,7 @@ $( document ).ready(function() {
 
 function crearPanel(datos_JSON){
 
-    var tabla = $("<table id=tabla_panel>");
+    var tabla = $("<table id=tabla_panel class=tabla_panel>");
 
     $(".slide_general").append(tabla);
 
@@ -24,7 +24,7 @@ function crearPanel(datos_JSON){
 
         var agregar_td_nombres = $("<td>").attr("class","nombres_pistas").attr("nombre",nombre_audio).attr("pista",key).text(nombre_mostrar).css("margin-top","10px");
         
-        var tr_pista = $("<tr>");
+        var tr_pista = $("<tr class>");
         $(tr_pista).append(agregar_td_nombres);
         $(tabla).append(tr_pista);
         
