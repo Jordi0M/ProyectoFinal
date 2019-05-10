@@ -100,3 +100,11 @@
 .myslider:hover { 
     opacity: 1; 
 } 
+
+#input_file_subir_json {
+  display: none;
+}
+#subir_sonido {
+  display: inline-block;
+
+}

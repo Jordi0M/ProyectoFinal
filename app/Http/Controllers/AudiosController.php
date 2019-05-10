@@ -67,4 +67,10 @@ class AudiosController extends Controller
             }
         }        
     }
+
+    public function destruirLocalStorage(){
+        
+        return view('destruir_sesion');
+       
+    }
 }

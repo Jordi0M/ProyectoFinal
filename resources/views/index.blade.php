@@ -9,35 +9,38 @@
             
         </div>
         <div class="col-sm-8" id="Botonera">
-            <button class="Botons" id="play" title="Click para Play">
+            <label class="Botons btn btn-secondary" id="play" title="Click para Play">
                 <i class="material-icons" style="float:left">play_arrow</i>
-            </button>
-            <button class="Botons" id="stop" title="Click para Stop">
+            </label>
+            <label class="Botons btn btn-secondary" id="stop" title="Click para Stop">
                 <i class="material-icons" style="float:right">stop</i>
-            </button>
+            </label>
             &nbsp;
-            <button class="Botons" id="limpiar" title="Click para limpiar las casillas">
+            <label class="Botons btn btn-secondary" id="limpiar" title="Click para limpiar las casillas">
                 <i class="material-icons" style="float:left">clear</i>
-            </button>
+            </label>
             &nbsp;
-            <button class="Botons" id="subir_json" title="Click para subir el archivo generado">
+            <label for="input_file_subir_json" class="Botons btn btn-secondary" id="subir_json" title="Click para subir el archivo generado">
                 <i class="material-icons" style="float:right">folder</i>
-            </button>
-            <button class="Botons" id="descargar_json" title="Click para generar un archivo">
+            </label>
+            <input type="file" id="input_file_subir_json" />
+            <a id="form_descargar_json">
+            <label class="Botons btn btn-secondary" id="descargar_json" title="Click para generar un archivo">
                 <i class="material-icons" style="float:left">save</i>
-            </button>
+            </label>
+            </a>
             &nbsp;
             @auth
                 @include('modals/modal_nuevo_sonido')
-                <button class="Botons" id="subir_sonido" title="Click para subir una cancion">
+                <label class="Botons btn btn-secondary" id="subir_sonido" title="Click para subir una cancion">
                     <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
-                </button>
+                </label>
             @endauth
 
             @guest
-                <button class="Botons" id="subir_sonido" title="Click para subir una cancion" onclick="alert('Registrate o logueate para poder subir una cancion')">
+                <label class="Botons btn btn-secondary" id="subir_sonido" title="Click para subir una cancion" onclick="alert('Registrate o logueate para poder subir una cancion')">
                     <i class="material-icons" style="float:right">music_note</i>
-                </button>
+                </label>
             @endguest
                     <i class="Tempo-name">Tempo</i>
                     <input class="input-tempo" id="input-metro" type="number" name="bpm" value="80" min="40" max="240">
@@ -48,10 +51,8 @@
     </div>
 
     <div class="row click_panel" style="background-color:gray">
-        <a href="" id="form_descargar_json" class="btn">Descargar JSON</a>
-        <input type="file" id="file-input" />
 
-		<div class="slide_general" id="slide_general">
+        <div class="slide_general" id="slide_general">
 			
         </div>
         <div class="slide_general" id="slide_general2">

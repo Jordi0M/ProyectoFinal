@@ -49,7 +49,7 @@ function crearTracks(datos_JSON){
         //objeto de objetos
         //tracks["track"+key] = track;     
     }
-    //localStorage.local_tracks = tracks;
+    localStorage.local_tracks = JSON.stringify(tracks);
 
     //crearemos el panel
     crearPanel();
@@ -66,7 +66,7 @@ $( document ).ready(function() {
     $( "#stop" ).on( "click",  pararSonido);
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
     $("#form_descargar_json").on( "click", descargarJSON );
-    $('#file-input').on('change', leerArchivo);
+    $('#input_file_subir_json').on('change', leerArchivo);
 
     
 });
