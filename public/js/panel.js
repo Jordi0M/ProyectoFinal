@@ -9,15 +9,9 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
-<<<<<<< HEAD
-            //console.log(JSON.parse(localStorage.local_tracks));
-            //console.log(datos_JSON);
-            itroducirLocalStorage();
-=======
             console.log(JSON.parse(localStorage.local_tracks));
             console.log(datos_JSON);
             introducirLocalStorage();
->>>>>>> 4196c8d88176f84270e1e005be3651ebc792c253
         } 
         else {
             crearTracks(datos_JSON);
@@ -68,12 +62,9 @@ $( document ).ready(function() {
     $( "#stop" ).on( "click",  pararSonido);
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
     $("#form_descargar_json").on( "click", descargarJSON );
-<<<<<<< HEAD
 
     $('#input_file_subir_json').on('change', leerArchivo);
-=======
-    $('#file-input').on('change', leerArchivo);
->>>>>>> 4196c8d88176f84270e1e005be3651ebc792c253
+
     
 });
 
