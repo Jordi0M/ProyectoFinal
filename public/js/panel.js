@@ -186,6 +186,11 @@ function crearSlide(key, tr_pista){
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
 
+    if(Tempo>240 || Tempo< 40){
+        alert(Tempo);
+        return ;    
+    }
+
     for (var i = 0; i <= 15; i++) {
         for (var z = 0; z < numero_de_tracks; z++) {
             casilla_iluminada = tracks[z]["casillas"][i];
@@ -197,10 +202,6 @@ function pasarDatosAPlaySonido(){
 }
 
 function playSonido(track){
-    if(Tempo>240 || Tempo< 40){
-        alert(Tempo);
-        return ;    
-    }
     var porcentaje_volumen = track["volumen"];
     var nombre = track["audio"];
     Loop = setInterval(function(){
