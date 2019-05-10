@@ -1,6 +1,7 @@
 //variable global para poder parar el set interval
 var Loop=[];
 var tracks = [];
+var Tempo=[];
 
 //añade a la array global los datos de cada track
 function datosTracks(){
@@ -8,9 +9,15 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
+<<<<<<< HEAD
             //console.log(JSON.parse(localStorage.local_tracks));
             //console.log(datos_JSON);
             itroducirLocalStorage();
+=======
+            console.log(JSON.parse(localStorage.local_tracks));
+            console.log(datos_JSON);
+            introducirLocalStorage();
+>>>>>>> 4196c8d88176f84270e1e005be3651ebc792c253
         } 
         else {
             crearTracks(datos_JSON);
@@ -23,7 +30,7 @@ function datosTracks(){
     
 }
 
-function itroducirLocalStorage(){
+function introducirLocalStorage(){
     //para borrar el localstorage:
     //localStorage.clear();
     tracks = JSON.parse(localStorage.local_tracks);
@@ -40,6 +47,7 @@ function crearTracks(datos_JSON){
             volumen : 70,
             audio : datos_JSON[key]["nombre_link"],
             casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
         };   
         
         //array de objetos
@@ -57,11 +65,15 @@ function crearTracks(datos_JSON){
 $( document ).ready(function() {
     //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
-    $( "#stop" ).on( "click",  pararSonido );
+    $( "#stop" ).on( "click",  pararSonido);
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
     $("#form_descargar_json").on( "click", descargarJSON );
+<<<<<<< HEAD
 
     $('#input_file_subir_json').on('change', leerArchivo);
+=======
+    $('#file-input').on('change', leerArchivo);
+>>>>>>> 4196c8d88176f84270e1e005be3651ebc792c253
     
 });
 
@@ -180,23 +192,6 @@ function crearSlide(key, tr_pista){
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
 
-    var ArrPistas=[];
-    
-    for (var i =0; i <=numero_de_tracks; i++) {        
-        ArrPistas.push($("[pista="+i+"]"));
-    }
-
-    for (var i = 0; i <= 15; i++) {
-        
-        for (var z = 0; z <= numero_de_tracks-1; z++) {
-            //console.log(ArrPistas[z][i]);
-            if ($(ArrPistas[z][i]).hasClass('hover')){
-                playSonido(ArrPistas[z][i]);
-                //Sonido($(ArrPistas[z][i]).attr("nombre"), 100);
-            }
-        }
-    }
-
     for (var i = 0; i <= 15; i++) {
         for (var z = 0; z < numero_de_tracks; z++) {
             casilla_iluminada = tracks[z]["casillas"][i];
@@ -244,3 +239,10 @@ function leerArchivo(e) {
     lector.readAsText(archivo);
   }
   
+function RecibirTempo(){
+    var valTempo=$('#input-metro').val();
+    var Tempo=60000/valTempo;  
+    console.log(Tempo);
+
+
+}
