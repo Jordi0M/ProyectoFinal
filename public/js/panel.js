@@ -225,17 +225,38 @@ function descargarJSON(){
 
 //Subir JSON
 function leerArchivo(e) {
+    var booleano;
     var archivo = e.target.files[0];
     if (!archivo) {
-      return;
+        return;
     }
     var lector = new FileReader();
     lector.onload = function(e) {
-      var contenido = e.target.result;
-      localStorage.local_tracks = contenido;
+        var contenido = e.target.result;
+        if (JSON.parse(contenido).length == JSON.parse(localStorage.local_tracks).length) {
+            for (const key in JSON.parse(localStorage.local_tracks)) {
+                //console.log(booleano);
+                if (JSON.parse(contenido)[key]["audio"] === JSON.parse(localStorage.local_tracks)[key]["audio"]) {
+                    booleano = true;
+                }
+                else{
+                    booleano = false;
+                }
+            }
+        }
+        if (booleano) {
+            localStorage.local_tracks = contenido;
+            tracks = JSON.parse(localStorage.local_tracks);
+            $("#slide_general").html("");
+            datosTracks();
+        }
+        else{
+            alert("Error, no has subido el mismo tipo de pistas");
+        }
     };
     lector.readAsText(archivo);
-  }
+    
+}
   
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
