@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
 </head>
-<body style="background-image: url('/img/carbon.png');">
+<body style="background-image: url('/img/carbon.jpg');">
     <div class="container">
         <div>
                 <br><br><br>

@@ -239,7 +239,6 @@ function leerArchivo(e) {
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
     var Tempo=60000/valTempo;
-    $('')  
 }
 
 
