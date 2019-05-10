@@ -8,6 +8,8 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
+            //para borrar el localstorage:
+            //localStorage.clear();
             tracks = JSON.parse(localStorage.local_tracks);
         } 
         else {
@@ -44,6 +46,7 @@ $( document ).ready(function() {
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido );
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
+    descargarJSON();
     
 });
 
@@ -201,4 +204,12 @@ function pararSonido(){
     for (var i =0; i <= Loop; i++) {
         clearInterval(i);
     }
+}
+
+function descargarJSON(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tracks));
+    var boton_descarga = document.getElementById('form_descargar_json');
+    boton_descarga.setAttribute("href",dataStr);
+    boton_descarga.setAttribute("download", "pistas.json");
+    //boton_descarga.click();
 }
