@@ -5,9 +5,7 @@
 
     //crearPanel(datos_JSON);
 
-    datosTracks();
+    crearTracks(datos_JSON);
     //crearPanel2(tracks);
-
-    $( ".Tecla" ).on( "click",  clickCasilla );
                 
 </script>

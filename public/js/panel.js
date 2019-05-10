@@ -8,40 +8,53 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
-            //para borrar el localstorage:
-            //localStorage.clear();
-            tracks = JSON.parse(localStorage.local_tracks);
+            console.log(JSON.parse(localStorage.local_tracks));
+            console.log(datos_JSON);
+            itroducirLocalStorage();
         } 
         else {
-
-            tracks = [];
-            for (const key in datos_JSON) {
-                var track = {
-                    nombre : datos_JSON[key]["nombre_mostrar"],
-                    volumen : 70,
-                    audio : datos_JSON[key]["nombre_link"],
-                    casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                };   
-                
-                //array de objetos
-                tracks.push(track);
-
-                //objeto de objetos
-                //tracks["track"+key] = track;     
-            }
-            //localStorage.local_tracks = tracks;
+            crearTracks(datos_JSON);
         }
     } else {
             document.getElementById("#slide_general").innerHTML = "Sorry, your browser does not support web storage...";
     }
 
     
+    
+}
+
+function itroducirLocalStorage(){
+    //para borrar el localstorage:
+    //localStorage.clear();
+    tracks = JSON.parse(localStorage.local_tracks);
+
+    //crearemos el panel
+    crearPanel();
+}
+
+function crearTracks(datos_JSON){
+    tracks = [];
+    for (const key in datos_JSON) {
+        var track = {
+            nombre : datos_JSON[key]["nombre_mostrar"],
+            volumen : 70,
+            audio : datos_JSON[key]["nombre_link"],
+            casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        };   
+        
+        //array de objetos
+        tracks.push(track);
+
+        //objeto de objetos
+        //tracks["track"+key] = track;     
+    }
+    //localStorage.local_tracks = tracks;
+
     //crearemos el panel
     crearPanel();
 }
 
 $( document ).ready(function() {
-    $( ".Tecla" ).on( "click",  clickCasilla );
     //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido );
@@ -72,8 +85,9 @@ function crearPanel(){
         
         crearCasillas(key, tr_pista);
         crearSlide(key, tr_pista);
- 
     }
+    //asignaremos el onclick despues de crear las teclas
+    $( ".Tecla" ).on( "click",  clickCasilla );
 }
 
 function clickCasilla(){
