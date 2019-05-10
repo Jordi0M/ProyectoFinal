@@ -49,6 +49,7 @@
 
     <div class="row click_panel" style="background-color:gray">
         <a href="" id="form_descargar_json" class="btn">Descargar JSON</a>
+        <input type="file" id="file-input" />
 
 		<div class="slide_general" id="slide_general">
 			

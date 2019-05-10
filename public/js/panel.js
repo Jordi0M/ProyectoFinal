@@ -46,7 +46,9 @@ $( document ).ready(function() {
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido );
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
-    descargarJSON();
+    $("#form_descargar_json").on( "click", descargarJSON );
+
+    $('#file-input').on('change', leerArchivo);
     
 });
 
@@ -206,10 +208,29 @@ function pararSonido(){
     }
 }
 
+//Descargar JSON
 function descargarJSON(){
+
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tracks));
-    var boton_descarga = document.getElementById('form_descargar_json');
-    boton_descarga.setAttribute("href",dataStr);
-    boton_descarga.setAttribute("download", "pistas.json");
+    $("#form_descargar_json").attr("href",dataStr).attr("download", "pistas.json");
     //boton_descarga.click();
 }
+
+//Subir JSON
+function leerArchivo(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    var lector = new FileReader();
+    lector.onload = function(e) {
+      var contenido = e.target.result;
+      console.log(contenido);
+      contenido = JSON.parse(contenido);
+      console.log(contenido);
+      localStorage.local_tracks = JSON.stringify(contenido);
+      console.log(localStorage.local_tracks);
+    };
+    lector.readAsText(archivo);
+  }
+  
