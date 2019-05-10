@@ -8,8 +8,8 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
-            console.log(JSON.parse(localStorage.local_tracks));
-            console.log(datos_JSON);
+            //console.log(JSON.parse(localStorage.local_tracks));
+            //console.log(datos_JSON);
             introducirLocalStorage();
         } 
         else {

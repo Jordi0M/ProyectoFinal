@@ -5,7 +5,22 @@
 
     //crearPanel(datos_JSON);
 
-    crearTracks(datos_JSON);
+    tracks = JSON.parse(localStorage.local_tracks);
+
+    var track = {
+        nombre : $(datos_JSON).last()[0]["nombre_mostrar"],
+        volumen : 70,
+        audio : $(datos_JSON).last()[0]["nombre_link"],
+        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
+    };   
+    
+    //array de objetos
+    tracks.push(track);
+    
+    localStorage.local_tracks = JSON.stringify(tracks);
+
+    datosTracks();
     //crearPanel2(tracks);
                 
 </script>
