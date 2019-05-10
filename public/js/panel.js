@@ -225,11 +225,7 @@ function leerArchivo(e) {
     var lector = new FileReader();
     lector.onload = function(e) {
       var contenido = e.target.result;
-      console.log(contenido);
-      contenido = JSON.parse(contenido);
-      console.log(contenido);
-      localStorage.local_tracks = JSON.stringify(contenido);
-      console.log(localStorage.local_tracks);
+      localStorage.local_tracks = contenido;
     };
     lector.readAsText(archivo);
   }
