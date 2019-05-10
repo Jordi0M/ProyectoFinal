@@ -1,8 +1,7 @@
 //variable global para poder parar el set interval
 var Loop=[];
 var tracks = [];
-var Tempo=[];
-
+var Tempo;
 //añade a la array global los datos de cada track
 function datosTracks(){
 
@@ -57,12 +56,18 @@ function crearTracks(datos_JSON){
 }
 
 $( document ).ready(function() {
+
+    $('#input-metro').change(function(){
+        Tempo=$(this).val();
+
+    })
     //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido);
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
     $("#form_descargar_json").on( "click", descargarJSON );
     $('#file-input').on('change', leerArchivo);
+
     
 });
 
@@ -192,7 +197,10 @@ function pasarDatosAPlaySonido(){
 }
 
 function playSonido(track){
-    
+    if(Tempo>240 || Tempo< 40){
+        alert(Tempo);
+        return ;    
+    }
     var porcentaje_volumen = track["volumen"];
     var nombre = track["audio"];
     Loop = setInterval(function(){
@@ -230,8 +238,8 @@ function leerArchivo(e) {
   
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
-    var Tempo=60000/valTempo;  
-    console.log(Tempo);
-
-
+    var Tempo=60000/valTempo;
+    $('')  
 }
+
+
