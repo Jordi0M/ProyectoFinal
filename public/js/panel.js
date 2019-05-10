@@ -8,8 +8,8 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
-            console.log(JSON.parse(localStorage.local_tracks));
-            console.log(datos_JSON);
+            //console.log(JSON.parse(localStorage.local_tracks));
+            //console.log(datos_JSON);
             itroducirLocalStorage();
         } 
         else {
@@ -48,7 +48,7 @@ function crearTracks(datos_JSON){
         //objeto de objetos
         //tracks["track"+key] = track;     
     }
-    //localStorage.local_tracks = tracks;
+    localStorage.local_tracks = JSON.stringify(tracks);
 
     //crearemos el panel
     crearPanel();
@@ -61,7 +61,7 @@ $( document ).ready(function() {
     $( "#play" ).on( "click",  pasarDatosAPlaySonido );
     $("#form_descargar_json").on( "click", descargarJSON );
 
-    $('#file-input').on('change', leerArchivo);
+    $('#input_file_subir_json').on('change', leerArchivo);
     
 });
 
