@@ -68,9 +68,11 @@ class AudiosController extends Controller
         }        
     }
 
-    public function destruirLocalStorage(){
-        
-        return view('destruir_sesion');
-       
+    public function logoutLocalStorage(){
+        return view('localstorage.logout');
+    }
+
+    public function loginLocalStorage(){
+        return view('localstorage.login');
     }
 }
