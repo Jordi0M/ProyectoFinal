@@ -33,11 +33,11 @@ class AudiosController extends Controller
             
             $validator = Validator::make($request->all(), [
                 'nuevo_nombre_del_sonido' => 'required',
-                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac'
+                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac|max:20000'
                     ]);
             
             if($validator->fails()){
-                return response()->json("Error en el formato", 404); // Status code here
+                return response()->json("Error en el formato o en el peso del archivo", 404); // Status code here
                 //return response()->json($validator->errors());
                 //return redirect()->back()->withErrors($validator);
             }
