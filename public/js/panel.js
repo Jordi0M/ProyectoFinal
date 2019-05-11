@@ -57,10 +57,24 @@ function crearTracks(datos_JSON){
 
 $( document ).ready(function() {
 
-    $('#input-metro').change(function(){
-        Tempo=$(this).val();
+ /// Validacion del Tempo
+    var number = document.getElementById('input-metro');
 
-    })
+    number.onkeydown = function(e) {
+        if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
+          || (e.keyCode > 47 && e.keyCode < 58) //numerico2
+          || (e.keyCode > 36 && e.keyCode < 41) //flechas
+          || e.keyCode == 8 || e.keyCode == 46)) { //supr y backspace
+            return false;
+        }
+        number.onkeyup = function(z){
+            Tempo=$(this).val();
+            console.log(Tempo);
+        }
+    }
+
+    //onclicks
+
     //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido);
