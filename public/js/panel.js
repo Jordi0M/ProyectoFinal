@@ -60,6 +60,12 @@ $( document ).ready(function() {
  /// Validacion del Tempo
     var number = document.getElementById('input-metro');
 
+    //al cambiar el numero por las flechas del imput number
+    $('#input-metro').change(function(){
+        Tempo=$(this).val();
+        console.log(Tempo);
+    })
+    //al teclear
     number.onkeydown = function(e) {
         if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
           || (e.keyCode > 47 && e.keyCode < 58) //numerico2
@@ -67,7 +73,13 @@ $( document ).ready(function() {
           || e.keyCode == 8 || e.keyCode == 46)) { //supr y backspace
             return false;
         }
+        if ($(this).val() == "") {
+            alert("mal")
+        }
         number.onkeyup = function(z){
+            if ($(this).val() == "") {
+                return;
+            }
             Tempo=$(this).val();
             console.log(Tempo);
         }
