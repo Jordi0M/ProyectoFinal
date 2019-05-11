@@ -16,13 +16,11 @@ class AudiosController extends Controller
     public function index(){
         if (Auth::user()) {
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
-            $NumeroPistas = $ListaAudios->count();
-            return view('index', compact('ListaAudios', 'NumeroPistas'));
+            return view('index', compact('ListaAudios'));
         }
         else{
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
-            $NumeroPistas = $ListaAudios->count();
-            return view('index', compact('ListaAudios', 'NumeroPistas'));
+            return view('index', compact('ListaAudios'));
         }
        
     }
@@ -73,6 +71,9 @@ class AudiosController extends Controller
     }
 
     public function loginLocalStorage(){
-        return view('localstorage.login');
+        //$ListaAudios_predeterminados = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
+        $ListaAudios_usuario = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
+        //return view('localstorage.login', compact('ListaAudios_predeterminados', 'ListaAudios_usuario'));
+        return view('localstorage.login', compact('ListaAudios_usuario'));
     }
 }
