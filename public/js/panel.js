@@ -243,14 +243,11 @@ function pasarDatosAPlaySonido(){
     for (var i = 0; i <= 15; i++) {
         for (var z = 0; z < numero_de_tracks; z++) {
             casilla_iluminada = tracks[z]["casillas"][i];
-            if (z != numero_de_tracks-1) {
+            if (z != numero_de_tracks) {
                 if (casilla_iluminada == 1){
                     //playSonido(tracks[z]);
                     arrayTemporal.push(tracks[z]);
                 }
-            }
-            if (z == numero_de_tracks-1) {
-                console.log(tracks[z]);
             }
         }
         arrayTiempo[i] = arrayTemporal;
@@ -259,8 +256,15 @@ function pasarDatosAPlaySonido(){
 
     var l = 0;
     Loop = setInterval(function(){
+        $(".linea_divisoria").css("color","black");
+        $(".linea_divisoria").eq(l).css("color","cyan");
         funcionPrueba(arrayTiempo[l]);
+        
         l++;
+        if (l >= 16) {
+            l = 0;
+        }
+        
     },2000)
 }
 
