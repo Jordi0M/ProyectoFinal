@@ -120,6 +120,7 @@ function crearPanel(){
     }
     //asignaremos el onclick despues de crear las teclas
     $( ".Tecla" ).on( "click",  clickCasilla );
+    lineasDelReproductor();
 }
 
 function clickCasilla(){
@@ -209,6 +210,25 @@ function crearSlide(key, tr_pista){
     } 
 }
 
+function lineasDelReproductor(){
+    var tabla = $("#tabla_panel");
+    var tr_lineas_divisorias = $("<tr>");
+    var primer_td_invisible = $("<td>");
+    var td_lineas = $("<td>").attr("class","lineas_reproductor");
+    var CssCasilla={"width":'40px',"height":'40px', "text-align":"center"};
+    //$(".linea_divisoria").eq(0).css("color","cyan");
+    //$(".linea_divisoria:eq(0)").css("color","cyan");
+
+    for (let index = 0; index < 16; index++) {
+        var div_linea_divisoria = $("<div>").attr("class","linea_divisoria").text("'").css(CssCasilla);
+        $(td_lineas).append(div_linea_divisoria);
+    }
+
+    $(tr_lineas_divisorias).append(primer_td_invisible);
+    $(tr_lineas_divisorias).append(td_lineas);
+    $(tabla).append(tr_lineas_divisorias);
+}
+
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
 
@@ -290,6 +310,7 @@ function leerArchivo(e) {
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
     var Tempo=60000/valTempo;
+    $('')  
 }
 
 
