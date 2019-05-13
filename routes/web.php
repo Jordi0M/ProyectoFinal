@@ -21,7 +21,9 @@ Auth::routes();
 Route::get('/','AudiosController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout_storage', 'AudiosController@destruirLocalStorage');
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/logout_storage', 'AudiosController@logoutLocalStorage');
+Route::get('/login_storage', 'AudiosController@loginLocalStorage');
+
+Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('/nuevo_sonido/{id}', 'AudiosController@nuevoSonido');

@@ -16,13 +16,11 @@ class AudiosController extends Controller
     public function index(){
         if (Auth::user()) {
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
-            $NumeroPistas = $ListaAudios->count();
-            return view('index', compact('ListaAudios', 'NumeroPistas'));
+            return view('index', compact('ListaAudios'));
         }
         else{
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
-            $NumeroPistas = $ListaAudios->count();
-            return view('index', compact('ListaAudios', 'NumeroPistas'));
+            return view('index', compact('ListaAudios'));
         }
        
     }
@@ -35,11 +33,11 @@ class AudiosController extends Controller
             
             $validator = Validator::make($request->all(), [
                 'nuevo_nombre_del_sonido' => 'required',
-                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac'
+                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac|max:20000'
                     ]);
             
             if($validator->fails()){
-                return response()->json("Error en el formato", 404); // Status code here
+                return response()->json("Error en el formato o en el peso del archivo", 404); // Status code here
                 //return response()->json($validator->errors());
                 //return redirect()->back()->withErrors($validator);
             }
@@ -68,9 +66,14 @@ class AudiosController extends Controller
         }        
     }
 
-    public function destruirLocalStorage(){
-        
-        return view('destruir_sesion');
-       
+    public function logoutLocalStorage(){
+        return view('localstorage.logout');
+    }
+
+    public function loginLocalStorage(){
+        //$ListaAudios_predeterminados = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
+        $ListaAudios_usuario = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
+        //return view('localstorage.login', compact('ListaAudios_predeterminados', 'ListaAudios_usuario'));
+        return view('localstorage.login', compact('ListaAudios_usuario'));
     }
 }

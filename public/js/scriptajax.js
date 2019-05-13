@@ -2,7 +2,7 @@ $( document ).ready(function() {
     
     $('#form_modal_nuevo_sonido').submit(function(e){
         e.preventDefault();
-        if (validarNulos("#form_modal_nuevo_sonido")) {
+        if (validarNulos("#form_modal_nuevo_sonido") && validarPesoArchivo()) {
 
             var ruta = window.location.origin+$("#form_modal_nuevo_sonido").attr("action");
             var nuevo_nombre_del_sonido = $("#form_modal_nuevo_sonido input[name=nuevo_nombre_del_sonido]").val();

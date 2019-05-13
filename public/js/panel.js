@@ -57,10 +57,36 @@ function crearTracks(datos_JSON){
 
 $( document ).ready(function() {
 
+ /// Validacion del Tempo
+    var number = document.getElementById('input-metro');
+
+    //al cambiar el numero por las flechas del imput number
     $('#input-metro').change(function(){
         Tempo=$(this).val();
-
+        console.log(Tempo);
     })
+    //al teclear
+    number.onkeydown = function(e) {
+        if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
+          || (e.keyCode > 47 && e.keyCode < 58) //numerico2
+          || (e.keyCode > 36 && e.keyCode < 41) //flechas
+          || e.keyCode == 8 || e.keyCode == 46)) { //supr y backspace
+            return false;
+        }
+        if ($(this).val() == "") {
+            alert("mal")
+        }
+        number.onkeyup = function(z){
+            if ($(this).val() == "") {
+                return;
+            }
+            Tempo=$(this).val();
+            console.log(Tempo);
+        }
+    }
+
+    //onclicks
+
     //$( ".myslider" ).on( "click",  clickCasilla );
     $( "#limpiar" ).on( "click",  limpiarCasillas );
     $( "#stop" ).on( "click",  pararSonido);
@@ -186,6 +212,11 @@ function crearSlide(key, tr_pista){
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
 
+    if(Tempo>240 || Tempo< 40){
+        alert(Tempo);
+        return ;    
+    }
+
     for (var i = 0; i <= 15; i++) {
         for (var z = 0; z < numero_de_tracks; z++) {
             casilla_iluminada = tracks[z]["casillas"][i];
@@ -197,10 +228,6 @@ function pasarDatosAPlaySonido(){
 }
 
 function playSonido(track){
-    if(Tempo>240 || Tempo< 40){
-        alert(Tempo);
-        return ;    
-    }
     var porcentaje_volumen = track["volumen"];
     var nombre = track["audio"];
     Loop = setInterval(function(){
@@ -224,17 +251,38 @@ function descargarJSON(){
 
 //Subir JSON
 function leerArchivo(e) {
+    var booleano;
     var archivo = e.target.files[0];
     if (!archivo) {
-      return;
+        return;
     }
     var lector = new FileReader();
     lector.onload = function(e) {
-      var contenido = e.target.result;
-      localStorage.local_tracks = contenido;
+        var contenido = e.target.result;
+        if (JSON.parse(contenido).length == JSON.parse(localStorage.local_tracks).length) {
+            for (const key in JSON.parse(localStorage.local_tracks)) {
+                //console.log(booleano);
+                if (JSON.parse(contenido)[key]["audio"] === JSON.parse(localStorage.local_tracks)[key]["audio"]) {
+                    booleano = true;
+                }
+                else{
+                    booleano = false;
+                }
+            }
+        }
+        if (booleano) {
+            localStorage.local_tracks = contenido;
+            tracks = JSON.parse(localStorage.local_tracks);
+            $("#slide_general").html("");
+            datosTracks();
+        }
+        else{
+            alert("Error, no has subido el mismo tipo de pistas");
+        }
     };
     lector.readAsText(archivo);
-  }
+    
+}
   
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
