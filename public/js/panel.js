@@ -223,6 +223,9 @@ function pasarDatosAPlaySonido(){
             if (casilla_iluminada == 1){
                 playSonido(tracks[z]);
             }
+            if (z == numero_de_tracks-1) {
+                console.log(tracks[z]);
+            }
         }
     }
 }
