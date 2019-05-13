@@ -120,6 +120,7 @@ function crearPanel(){
     }
     //asignaremos el onclick despues de crear las teclas
     $( ".Tecla" ).on( "click",  clickCasilla );
+    lineasDelReproductor();
 }
 
 function clickCasilla(){
