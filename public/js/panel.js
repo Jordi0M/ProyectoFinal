@@ -249,6 +249,9 @@ function pasarDatosAPlaySonido(){
                     arrayTemporal.push(tracks[z]);
                 }
             }
+            if (z == numero_de_tracks-1) {
+                console.log(tracks[z]);
+            }
         }
         arrayTiempo[i] = arrayTemporal;
         arrayTemporal = [];
