@@ -237,22 +237,41 @@ function pasarDatosAPlaySonido(){
         return ;    
     }
 
+    var arrayTiempo = [];
+    var arrayTemporal = [];
+
     for (var i = 0; i <= 15; i++) {
         for (var z = 0; z < numero_de_tracks; z++) {
             casilla_iluminada = tracks[z]["casillas"][i];
-            if (casilla_iluminada == 1){
-                playSonido(tracks[z]);
+            if (z != numero_de_tracks-1) {
+                if (casilla_iluminada == 1){
+                    //playSonido(tracks[z]);
+                    arrayTemporal.push(tracks[z]);
+                }
             }
         }
+        arrayTiempo[i] = arrayTemporal;
+        arrayTemporal = [];
+    }
+
+    var l = 0;
+    Loop = setInterval(function(){
+        funcionPrueba(arrayTiempo[l]);
+        l++;
+    },2000)
+}
+
+function funcionPrueba(arrayTiempo){
+    for (const key in arrayTiempo) {
+        playSonido(arrayTiempo[key]);
     }
 }
 
 function playSonido(track){
+    console.log(track);
     var porcentaje_volumen = track["volumen"];
     var nombre = track["audio"];
-    Loop = setInterval(function(){
-        Sonido(nombre,porcentaje_volumen);
-    },2000)
+    Sonido(nombre,porcentaje_volumen);
 }
 
 function pararSonido(){
