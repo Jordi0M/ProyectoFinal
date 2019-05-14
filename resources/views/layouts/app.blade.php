@@ -60,7 +60,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item" href="/comprobar_mis_pistas">
+                                    <a class="dropdown-item" href="/mis_pistas">
                                         Mis Pistas
                                     </a>
 

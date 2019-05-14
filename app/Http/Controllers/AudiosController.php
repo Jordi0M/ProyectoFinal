@@ -25,23 +25,10 @@ class AudiosController extends Controller
        
     }
 
-    public function comprobarMisPistas(){
-        if (Auth::user()) {
-            $ListaAudios_usuario = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
-            $ListaAudios_predeterminados = DB::table('audios')->where('id_usuario', 1)->get();
-            return view('localstorage.mis_pistas', compact('ListaAudios_usuario', 'ListaAudios_predeterminados'));
-        }
-        else{
-            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();
-            return view('index', compact('ListaAudios'));
-        }
-       
-    }
-
     public function MisPistas(){
         if (Auth::user()) {
             $ListaAudios = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
-            return view('index', compact('ListaAudios'));
+            return view('localstorage.mis_pistas', compact('ListaAudios'));
         }
         else{
             $ListaAudios = DB::table('audios')->where('id_usuario', 1)->get();

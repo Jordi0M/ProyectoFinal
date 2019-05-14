@@ -20,8 +20,6 @@ Auth::routes();
 
 Route::get('/','AudiosController@index');
 Route::get('/mis_pistas', 'AudiosController@misPistas');
-Route::get('/comprobar_mis_pistas', 'AudiosController@comprobarMisPistas');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/logout_storage', 'AudiosController@logoutLocalStorage');

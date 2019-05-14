@@ -64,7 +64,7 @@
 
         var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
   
-        datosTracks("#slide_general");
+        datosTracks();
     
     </script>
 @endsection

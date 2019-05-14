@@ -4,7 +4,8 @@
 <script>
 
     localStorage.clear();
-    window.location = "/";
+    //window.location = "/";
+    document.getElementById("logout-form").submit();
 
     ////////////LOGOUT, se guarda las iniciales.
     /*
