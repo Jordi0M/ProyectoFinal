@@ -265,7 +265,7 @@ function pasarDatosAPlaySonido(){
             l = 0;
         }
         
-    },2000)
+    },500)
 }
 
 function funcionPrueba(arrayTiempo){
@@ -282,6 +282,7 @@ function playSonido(track){
 }
 
 function pararSonido(){
+    $(".linea_divisoria").css("color","black");
     for (var i =0; i <= Loop; i++) {
         clearInterval(i);
     }
