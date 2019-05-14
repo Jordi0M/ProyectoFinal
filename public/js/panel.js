@@ -93,18 +93,20 @@ function crearPanel(){
     $("#slide_general").append(tabla);
 
     for (const key in tracks) {
-        
-        var nombre_mostrar = tracks[key]["nombre"];
+        //if (key > 5){
+            var nombre_mostrar = tracks[key]["nombre"];
 
-        var agregar_td_nombres = $("<td>").text(nombre_mostrar).css("margin-top","10px");
+            var agregar_td_nombres = $("<td>").text(nombre_mostrar).css("margin-top","10px");
+            
+            var tr_pista = $("<tr>");
+            
+            $(tr_pista).append(agregar_td_nombres);
+            $(tabla).append(tr_pista);
+            
+            crearCasillas(key, tr_pista);
+            crearSlide(key, tr_pista);
+        //}
         
-        var tr_pista = $("<tr>");
-        
-        $(tr_pista).append(agregar_td_nombres);
-        $(tabla).append(tr_pista);
-        
-        crearCasillas(key, tr_pista);
-        crearSlide(key, tr_pista);
     }
     //asignaremos el onclick despues de crear las teclas
     $( ".Tecla" ).on( "click",  clickCasilla );
@@ -161,7 +163,7 @@ function limpiarCasillas (){
 
 function crearCasillas(key, tr_pista){
     //var CssCasilla={"border":'solid #545454 3px',"width":'40px',"height":'40px',"border-radius":'5px',"background-color":'#686868'};
-    var Teclas=$("<td>").attr("class","Teclas").attr("numero_fila",key);
+    var Teclas=$("<td>").attr("class","Teclas");
     $(tr_pista).append(Teclas)
 
     for (var i=0; i<=15; i++) {
@@ -188,8 +190,8 @@ function crearSlide(key, tr_pista){
     $(tr_pista).append(DivSlide);
     $(DivSlide).append(inputSlide);
     $(DivSlide).append(SpanNumVolumen);
-    var rangeslider = $(".myslider")[key];
-    var output = $(".num_volumen")[key];
+    var rangeslider = inputSlide[0];
+    var output = SpanNumVolumen[0];
     output.innerHTML = rangeslider.value;     
     rangeslider.oninput = function() {
     output.innerHTML = this.value; 
