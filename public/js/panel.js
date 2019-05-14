@@ -60,11 +60,6 @@ $( document ).ready(function() {
  /// Validacion del Tempo
     var number = document.getElementById('input-metro');
 
-    //al cambiar el numero por las flechas del imput number
-    $('#input-metro').change(function(){
-        Tempo=$(this).val();
-        console.log(Tempo);
-    })
     //al teclear
     number.onkeydown = function(e) {
         if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
@@ -75,13 +70,6 @@ $( document ).ready(function() {
         }
         if ($(this).val() == "") {
             alert("mal")
-        }
-        number.onkeyup = function(z){
-            if ($(this).val() == "") {
-                return;
-            }
-            Tempo=$(this).val();
-            console.log(Tempo);
         }
     }
 
@@ -231,12 +219,12 @@ function lineasDelReproductor(){
 
 function pasarDatosAPlaySonido(){
     var numero_de_tracks = tracks.length;
-
+/*
     if(Tempo>240 || Tempo< 40){
         alert(Tempo);
         return ;    
     }
-
+*/
     var arrayTiempo = [];
     var arrayTemporal = [];
 
@@ -255,6 +243,7 @@ function pasarDatosAPlaySonido(){
     }
 
     var l = 0;
+    RecibirTempo();
     Loop = setInterval(function(){
         $(".linea_divisoria").css("color","black");
         $(".linea_divisoria").eq(l).css("color","cyan");
@@ -265,7 +254,7 @@ function pasarDatosAPlaySonido(){
             l = 0;
         }
         
-    },500)
+    },Tempo)
 }
 
 function funcionPrueba(arrayTiempo){
@@ -333,8 +322,7 @@ function leerArchivo(e) {
   
 function RecibirTempo(){
     var valTempo=$('#input-metro').val();
-    var Tempo=60000/valTempo;
-    $('')  
+    Tempo=60000/valTempo;
 }
 
 

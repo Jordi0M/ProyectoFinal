@@ -25,7 +25,6 @@
 <body style="background-image: url('/img/carbon.jpg');">
     <div class="container">
         <div>
-                <br><br><br>
             @yield('contenido')
         </div>
     </div>
