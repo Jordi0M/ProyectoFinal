@@ -60,16 +60,15 @@ $( document ).ready(function() {
  /// Validacion del Tempo
     var number = document.getElementById('input-metro');
 
-    //al teclear
-    number.onkeydown = function(e) {
-        if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
-          || (e.keyCode > 47 && e.keyCode < 58) //numerico2
-          || (e.keyCode > 36 && e.keyCode < 41) //flechas
-          || e.keyCode == 8 || e.keyCode == 46)) { //supr y backspace
-            return false;
-        }
-        if ($(this).val() == "") {
-            alert("mal")
+    if (number) {
+        //al teclear
+        number.onkeydown = function(e) {
+            if(!((e.keyCode > 95 && e.keyCode < 106) //numerico1
+            || (e.keyCode > 47 && e.keyCode < 58) //numerico2
+            || (e.keyCode > 36 && e.keyCode < 41) //flechas
+            || e.keyCode == 8 || e.keyCode == 46)) { //supr y backspace
+                return false;
+            }
         }
     }
 
