@@ -248,7 +248,7 @@ function pasarDatosAPlaySonido(){
     Loop = setInterval(function(){
         $(".linea_divisoria").css("color","black");
         $(".linea_divisoria").eq(l).css("color","cyan");
-        funcionPrueba(arrayTiempo[l]);
+        pasarArrayASonido(arrayTiempo[l]);
         
         l++;
         if (l >= 16) {
@@ -258,14 +258,13 @@ function pasarDatosAPlaySonido(){
     },Tempo)
 }
 
-function funcionPrueba(arrayTiempo){
+function pasarArrayASonido(arrayTiempo){
     for (const key in arrayTiempo) {
         playSonido(arrayTiempo[key]);
     }
 }
 
 function playSonido(track){
-    console.log(track);
     var porcentaje_volumen = track["volumen"];
     var nombre = track["audio"];
     Sonido(nombre,porcentaje_volumen);
