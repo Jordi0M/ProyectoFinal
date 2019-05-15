@@ -33,10 +33,8 @@
     <script>
 
         var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
-        
-        console.log(datos_JSON);
 
-        mostrarListaAudios()
+        mostrarListaAudios();
     
     </script>
 @endsection
