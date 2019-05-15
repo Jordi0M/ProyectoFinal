@@ -60,8 +60,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item" href="/mis_pistas">
-                                        Mis Pistas
+                                    <a class="dropdown-item" href="/mis_audios">
+                                        Mis Audios
                                     </a>
 
                                     {{-- <a class="dropdown-item" href="{{ route('logout') }}"

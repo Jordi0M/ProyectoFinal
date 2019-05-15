@@ -30,7 +30,7 @@
             </label>
             </a>
             &nbsp;
-            
+
             <i class="Tempo-name">Tempo</i>
             <input class="input-tempo" id="input-metro" type="number" name="bpm" value="80" min="40" max="240">
             <!--<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a>
@@ -41,7 +41,7 @@
 
     <div class="row click_panel" style="background-color:gray">
 
-        <div class="slide_general" id="slide_general">
+        <div class="slide_general table-responsive" id="slide_general">
 			
         </div>
 

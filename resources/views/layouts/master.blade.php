@@ -15,6 +15,7 @@
 
     <!-- JS propio -->
     <script src="/js/panel.js"></script>
+    <script src="/js/mispistas.js"></script>
     <script src="/js/scriptajax.js"></script>
     <script src="/js/validador.js"></script>
 

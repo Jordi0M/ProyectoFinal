@@ -19,7 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/','AudiosController@index');
-Route::get('/mis_pistas', 'AudiosController@misPistas');
+Route::get('/mis_audios', 'AudiosController@misAudios');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/logout_storage', 'AudiosController@logoutLocalStorage');

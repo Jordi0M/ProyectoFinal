@@ -25,7 +25,7 @@ class AudiosController extends Controller
        
     }
 
-    public function MisPistas(){
+    public function MisAudios(){
         if (Auth::user()) {
             $ListaAudios = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
             return view('localstorage.mis_pistas', compact('ListaAudios'));

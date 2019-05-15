@@ -87,7 +87,7 @@ $( document ).ready(function() {
 
 function crearPanel(){
 
-    var tabla = $("<table id=tabla_panel class=tabla_panel>");
+    var tabla = $("<table id=tabla_panel class=tabla_panel table table-striped style='width:1024px;'>");
 
     $("#slide_general").append(tabla);
 
