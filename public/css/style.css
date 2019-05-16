@@ -106,3 +106,9 @@
   display: inline-block;
 
 }
+
+#tabla_mis_pistas{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 3%;
+}

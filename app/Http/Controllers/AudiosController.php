@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\NuevoSonidoRequest;
 
@@ -65,11 +66,10 @@ class AudiosController extends Controller
             $sonido->nombre_mostrar = $request->input('nuevo_nombre_del_sonido');
             $sonido->save();
 
-            $ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
-            $NumeroPistas = $ListaAudios->count();
-            return response()->json(view('bladesajax.panel', compact('ListaAudios', 'NumeroPistas'))->render());    
-            //return view('index', compact('ListaAudios', 'NumeroPistas'));
-
+            //para la raiz era este:
+            //$ListaAudios = DB::table('audios')->where('id_usuario', 1)->orWhere('id_usuario', Auth::user()->id)->get();
+            $ListaAudios = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
+            return response()->json(view('bladesajax.panel', compact('ListaAudios'))->render());    
             
             //return redirect()->back();
             //return $this->index_auntenticado($id);
@@ -87,5 +87,21 @@ class AudiosController extends Controller
         $ListaAudios_usuario = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
         //return view('localstorage.login', compact('ListaAudios_predeterminados', 'ListaAudios_usuario'));
         return view('localstorage.login', compact('ListaAudios_usuario'));
+    }
+
+    public function eliminarAudio($id){
+        if(request()->ajax()){
+            if (Auth::user()) {
+                $nombre_a_buscar = "public/".$id;
+                $nombre_link_audio = DB::table('audios')->where('id_usuario', Auth::user()->id)->Where('nombre_link', $nombre_a_buscar)->delete();
+
+                $path = public_path()."/storage/".$id;
+                unlink($path);
+                
+                $ListaAudios = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
+                return response()->json(view('bladesajax.panel', compact('ListaAudios'))->render());
+                //return redirect()->back();
+            }
+        }
     }
 }

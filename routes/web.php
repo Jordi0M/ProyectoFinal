@@ -28,3 +28,4 @@ Route::get('/login_storage', 'AudiosController@loginLocalStorage');
 Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('/nuevo_sonido/{id}', 'AudiosController@nuevoSonido');
+Route::delete('/eliminar_audio/{id}', 'AudiosController@eliminarAudio');

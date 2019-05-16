@@ -29,7 +29,26 @@
 			
         </div>
 
+        <table class="table table-striped table-dark" id="tabla_mis_pistas">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">Nombre Audio</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_tabla_mis_pistas">
+                {{-- Aqui iran los datos del javascript --}}
+            </tbody>
+        </table>
+
     </div>
+
+    <form id="form_eliminar" action="/eliminar_audio/" method="post" style="display:none">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+    </form>
+
     <script>
 
         var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};

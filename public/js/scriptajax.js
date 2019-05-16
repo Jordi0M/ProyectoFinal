@@ -24,7 +24,9 @@ $( document ).ready(function() {
                     $('#modal_nuevo_sonido').modal('hide');
                     $('#form_modal_nuevo_sonido')[0].reset();
                     $( '.modal-backdrop' ).remove();//eliminamos el fondo oscuro que deja el modal (hay veces que no se va)
-                    $("#slide_general").html(data);
+                    //$("#slide_general").html(data);
+                    $("#tbody_tabla_mis_pistas").html("");
+                    $("#tbody_tabla_mis_pistas").html(data);
                 },
                 error: function(data) {
                     console.log(data.responseJSON);
@@ -36,5 +38,31 @@ $( document ).ready(function() {
                 */
             })
         }
+    });
+
+    $('#form_eliminar').submit(function(e){
+        e.preventDefault();
+
+            var ruta = window.location.origin+$("#form_eliminar").attr("action");
+            var token = $("#form_eliminar input[name=_token]").val();
+
+            $.ajax({
+                url: ruta,
+                headers:{'X-CSRF-TOKEN':token},
+                type: 'DELETE',
+                dataType: 'json',
+                success: function(data){
+                    $("#tbody_tabla_mis_pistas").html("");
+                    $("#tbody_tabla_mis_pistas").html(data);
+                },
+                error: function(data) {
+                    console.log(data.responseJSON);
+                },/*
+                error: function(xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    console.log(err.errors);
+                }
+                */
+            })
     });
 });
