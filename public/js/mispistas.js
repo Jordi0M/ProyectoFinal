@@ -106,12 +106,18 @@ function cambiarInputEditarNombre(boton){
     icono_boton = $(boton).children()[0];
 
     if ($(icono_boton).text() == "create") {
+        //deshabilitamos todos para que no pueda hacer mas de uno:
+        $("[numero_nombre_mostrar]").attr("disabled",true);
+        $(".editar").children().text("create")
+
         $(input_audio).attr("disabled",false);
         $(icono_boton).text("save");
     }
     else if ($(icono_boton).text() == "save") {
+        /*
         $(input_audio).attr("disabled",true);
         $(icono_boton).text("create");
+        */
         var nuevo_nombre = $(input_audio).val();
         enviarPeticionEditarNombreAudio(boton, nuevo_nombre);
     }
@@ -127,11 +133,13 @@ function enviarPeticionEditarNombreAudio(boton, nuevo_nombre){
 
     $("#input_nuevo_nombre_audio").val(nuevo_nombre);
 
-    $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public);
+    if (validarNulos("#form_mis_pistas")){
+        $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public);
 
-    editarAudioLocalStorage(nombre_audio_link, nuevo_nombre);
+        editarAudioLocalStorage(nombre_audio_link, nuevo_nombre);
 
-    $(form_mis_pistas).submit();
+        $(form_mis_pistas).submit();
+    }
 
 }
 
