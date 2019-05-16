@@ -96,7 +96,6 @@ function eliminarDelLocalStorage(nombre_audio_link){
 function editarNombreAudio(){
 
     cambiarInputEditarNombre(this);
-
     
 }
 
@@ -130,25 +129,20 @@ function enviarPeticionEditarNombreAudio(boton, nuevo_nombre){
 
     $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public);
 
+    editarAudioLocalStorage(nombre_audio_link, nuevo_nombre);
+
     $(form_mis_pistas).submit();
 
 }
 
-function editarAudioLocalStorage(){
-/*
-    var ultimo_track = tracks.length-1;
-    var track = {
-        nombre : tracks[ultimo_track]["nombre"],
-        volumen : 70,
-        audio : tracks[ultimo_track]["audio"],
-        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    };   
+function editarAudioLocalStorage(nombre_audio_link, nuevo_nombre){
 
     var audios_local = JSON.parse(localStorage.local_tracks);
-
-    audios_local.push(track);
-
+    
+    for (const key in audios_local) {
+        if (audios_local[key]["audio"] == nombre_audio_link) {
+            audios_local[key]["nombre"] = nuevo_nombre;
+        }
+    }
     localStorage.local_tracks = JSON.stringify(audios_local);
-    */
-
 }
