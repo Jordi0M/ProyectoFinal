@@ -29,4 +29,4 @@ Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('/nuevo_sonido/{id}', 'AudiosController@nuevoSonido');
 Route::delete('/eliminar_audio/{id}', 'AudiosController@eliminarAudio');
-Route::put('/editar_nombre_audio/{id}/{id2}', 'AudiosController@editarNombreAudio');
+Route::put('/editar_nombre_audio/{id}', 'AudiosController@editarNombreAudio');

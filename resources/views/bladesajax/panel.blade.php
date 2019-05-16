@@ -3,6 +3,8 @@
     var datos_JSON = {!! json_encode($ListaAudios->toArray(), JSON_HEX_TAG) !!};
 
     mostrarListaAudios();
+    
+
 {{--
     //Esto era para añadir en las propias pistas de la raiz
     /*

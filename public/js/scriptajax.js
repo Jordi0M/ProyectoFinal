@@ -27,6 +27,7 @@ $( document ).ready(function() {
                     //$("#slide_general").html(data);
                     $("#tbody_tabla_mis_pistas").html("");
                     $("#tbody_tabla_mis_pistas").html(data);
+                    nuevoAudioLocalStorage();
                 },
                 error: function(data) {
                     console.log(data.responseJSON);
@@ -67,7 +68,26 @@ $( document ).ready(function() {
                 })
             }
             else if(ruta.indexOf("/editar_nombre_audio/") != -1){
-                this.submit();
+                var nuevo_nombre_audio = $("#input_nuevo_nombre_audio").val();
+                $.ajax({
+                    url: ruta,
+                    headers:{'X-CSRF-TOKEN':token},
+                    data: {nuevo_nombre_audio: nuevo_nombre_audio},
+                    type: 'PUT',
+                    dataType: 'json',
+                    success: function(data){
+                        $("#tbody_tabla_mis_pistas").html("");
+                        $("#tbody_tabla_mis_pistas").html(data);
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    },/*
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        console.log(err.errors);
+                    }*/
+                    
+                })
             }
             else{
                 console.log("error");

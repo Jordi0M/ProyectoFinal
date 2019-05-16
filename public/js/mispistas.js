@@ -49,6 +49,24 @@ function mostrarListaAudios(){
     
 }
 
+function nuevoAudioLocalStorage(){
+
+    var ultimo_track = tracks.length-1;
+    var track = {
+        nombre : tracks[ultimo_track]["nombre"],
+        volumen : 70,
+        audio : tracks[ultimo_track]["audio"],
+        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    };   
+
+    var audios_local = JSON.parse(localStorage.local_tracks);
+
+    audios_local.push(track);
+
+    localStorage.local_tracks = JSON.stringify(audios_local);
+
+}
+
 function eliminarAudio(){
     var form_mis_pistas = $("#form_mis_pistas");
     $("#metodo_form_mis_pistas").val("delete");
@@ -79,9 +97,7 @@ function editarNombreAudio(){
 
     cambiarInputEditarNombre(this);
 
-    //eliminarDelLocalStorage(nombre_audio_link);
-
-    //$(form_mis_pistas).submit();
+    
 }
 
 function cambiarInputEditarNombre(boton){
@@ -100,8 +116,6 @@ function cambiarInputEditarNombre(boton){
         var nuevo_nombre = $(input_audio).val();
         enviarPeticionEditarNombreAudio(boton, nuevo_nombre);
     }
-    
-    //console.log(tracks[numero_boton_audio]);
 }
 
 function enviarPeticionEditarNombreAudio(boton, nuevo_nombre){
@@ -112,8 +126,29 @@ function enviarPeticionEditarNombreAudio(boton, nuevo_nombre){
     var nombre_audio_link = tracks[numero_audio]["audio"];
     var nombre_audio_link_sin_public = nombre_audio_link.replace('public/', '');
 
-    $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public+"/"+nuevo_nombre);
+    $("#input_nuevo_nombre_audio").val(nuevo_nombre);
+
+    $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public);
 
     $(form_mis_pistas).submit();
+
+}
+
+function editarAudioLocalStorage(){
+/*
+    var ultimo_track = tracks.length-1;
+    var track = {
+        nombre : tracks[ultimo_track]["nombre"],
+        volumen : 70,
+        audio : tracks[ultimo_track]["audio"],
+        casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    };   
+
+    var audios_local = JSON.parse(localStorage.local_tracks);
+
+    audios_local.push(track);
+
+    localStorage.local_tracks = JSON.stringify(audios_local);
+    */
 
 }

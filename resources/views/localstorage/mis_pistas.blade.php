@@ -46,6 +46,7 @@
 
     <form id="form_mis_pistas" action="" method="post" style="display:none">
         <input id="metodo_form_mis_pistas" name="_method" type="hidden"/>
+        <input name="nuevo_nombre_audio" id="input_nuevo_nombre_audio" type="hidden">
         {{ csrf_field() }}
     </form>
 

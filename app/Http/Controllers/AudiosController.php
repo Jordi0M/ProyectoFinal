@@ -105,7 +105,17 @@ class AudiosController extends Controller
         }
     }
 
-    public function editarNombreAudio($id, $id2){
-        return $id.$id2;
+    public function editarNombreAudio(request $request, $id){
+        if(request()->ajax()){
+            $nombre_a_buscar = "public/".$id;
+            $nombre_link_audio = audios::where('id_usuario', Auth::user()->id)->Where('nombre_link', $nombre_a_buscar)->first();
+            $nombre_link_audio->nombre_mostrar = $request->input("nuevo_nombre_audio");
+            $nombre_link_audio->save();
+            
+            $ListaAudios = DB::table('audios')->where('id_usuario', Auth::user()->id)->get();
+            return response()->json(view('bladesajax.panel', compact('ListaAudios'))->render());
+            //return redirect()->back();
+        }
+
     }
 }
