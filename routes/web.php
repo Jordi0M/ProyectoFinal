@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/','AudiosController@index');
 Route::get('/mis_audios', 'AudiosController@misAudios');
