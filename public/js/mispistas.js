@@ -49,11 +49,24 @@ function eliminarAudio(){
     var form_eliminar = $("#form_eliminar");
     var numero_audio = $(this).attr("numero_audio");
     var ruta_eliminar = $("#form_eliminar").attr("action");
-    var nombre_audio_link = tracks[numero_audio]["audio"].replace('public/', '');
-    //nombre_audio_link = tracks[numero_audio]["audio"].replace('.wav', '');
+    var nombre_audio_link = tracks[numero_audio]["audio"];
+    var nombre_audio_link_sin_public = nombre_audio_link.replace('public/', '');
 
-    $("#form_eliminar").attr("action",ruta_eliminar+nombre_audio_link);
+    $("#form_eliminar").attr("action",ruta_eliminar+nombre_audio_link_sin_public);
+
+    eliminarDelLocalStorage(nombre_audio_link);
 
     $(form_eliminar).submit();
 }
 
+function eliminarDelLocalStorage(nombre_audio_link){
+    var array_localstorage = JSON.parse(localStorage.local_tracks);
+
+    for (const key in array_localstorage) {
+        if (array_localstorage[key]["audio"] == nombre_audio_link) {
+            array_localstorage.splice(key, 1);
+        }
+    }
+
+    localStorage.local_tracks = JSON.stringify(array_localstorage);
+}
