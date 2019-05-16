@@ -104,4 +104,8 @@ class AudiosController extends Controller
             }
         }
     }
+
+    public function editarNombreAudio($id, $id2){
+        return $id.$id2;
+    }
 }

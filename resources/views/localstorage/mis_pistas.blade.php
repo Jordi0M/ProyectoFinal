@@ -9,8 +9,8 @@
         <div class="col-sm-8" id="Botonera">
             @auth
                 @include('modals/modal_nuevo_sonido')
-                <label class="Botons btn btn-secondary" id="subir_sonido" title="Click para subir una cancion">
-                    <i class="material-icons" style="float:right" data-toggle="modal" data-target="#modal_nuevo_sonido">music_note</i>
+                <label class="Botons btn btn-secondary" id="subir_sonido" data-toggle="modal" data-target="#modal_nuevo_sonido" title="Click para subir una cancion">
+                    <i class="material-icons" style="float:right" >add</i>
                 </label>
             @endauth
 
@@ -44,9 +44,9 @@
 
     </div>
 
-    <form id="form_eliminar" action="/eliminar_audio/" method="post" style="display:none">
+    <form id="form_mis_pistas" action="" method="post" style="display:none">
+        <input id="metodo_form_mis_pistas" name="_method" type="hidden"/>
         {{ csrf_field() }}
-        {{ method_field('delete') }}
     </form>
 
     <script>

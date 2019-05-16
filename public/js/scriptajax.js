@@ -40,29 +40,40 @@ $( document ).ready(function() {
         }
     });
 
-    $('#form_eliminar').submit(function(e){
+    $('#form_mis_pistas').submit(function(e){
         e.preventDefault();
 
-            var ruta = window.location.origin+$("#form_eliminar").attr("action");
-            var token = $("#form_eliminar input[name=_token]").val();
+            var ruta = window.location.origin+$("#form_mis_pistas").attr("action");
+            var token = $("#form_mis_pistas input[name=_token]").val();
 
-            $.ajax({
-                url: ruta,
-                headers:{'X-CSRF-TOKEN':token},
-                type: 'DELETE',
-                dataType: 'json',
-                success: function(data){
-                    $("#tbody_tabla_mis_pistas").html("");
-                    $("#tbody_tabla_mis_pistas").html(data);
-                },
-                error: function(data) {
-                    console.log(data.responseJSON);
-                },/*
-                error: function(xhr, status, error) {
-                    var err = eval("(" + xhr.responseText + ")");
-                    console.log(err.errors);
-                }
-                */
-            })
+            if (ruta.indexOf("/eliminar_audio/") != -1) {
+                $.ajax({
+                    url: ruta,
+                    headers:{'X-CSRF-TOKEN':token},
+                    type: 'DELETE',
+                    dataType: 'json',
+                    success: function(data){
+                        $("#tbody_tabla_mis_pistas").html("");
+                        $("#tbody_tabla_mis_pistas").html(data);
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    },/*
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        console.log(err.errors);
+                    }*/
+                    
+                })
+            }
+            else if(ruta.indexOf("/editar_nombre_audio/") != -1){
+                this.submit();
+            }
+            else{
+                console.log("error");
+            }
+            
+            
     });
+
 });

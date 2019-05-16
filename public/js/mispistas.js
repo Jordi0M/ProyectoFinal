@@ -21,13 +21,16 @@ function mostrarListaAudios(){
         
         var nuevo_tr = $("<tr>");
         var nuevo_th = $("<th scope=row>");
-        var td_nombre_audio = $("<td>").text(tracks[key]["nombre"]);
+        var td_nombre_audio = $("<td>");
+        var input_td_nombre_audio = $("<input disabled>").attr("numero_nombre_mostrar",key).val(tracks[key]["nombre"]);
         var td_botones = $("<td>");
-        var boton_eliminar = $("<button class='btn btn-danger eliminar' style='margin-left: 5%' title='click para editar el nombre'>").attr("numero_audio",key);
-        var boton_editar = $("<button class='btn btn-warning editar' title='click para eliminar el audio'>").attr("numero_audio",key);
+        var boton_eliminar = $("<button class='btn btn-danger eliminar' style='margin-left: 5%' title='Click para eliminar el audio'>").attr("numero_audio",key);
+        var boton_editar = $("<button class='btn btn-warning editar' title='Click para editar el nombre'>").attr("numero_audio",key);
         var icono_boton_editar = $("<i>").attr("class","material-icons").attr("style","float:right").text("create");
         var icono_boton_eliminar = $("<i>").attr("class","material-icons").attr("style","float:right").text("delete");
         
+
+        $(td_nombre_audio).append(input_td_nombre_audio);
 
         $(boton_editar).append(icono_boton_editar);
         $(td_botones).append(boton_editar);
@@ -41,22 +44,23 @@ function mostrarListaAudios(){
 
     $( document ).ready(function() {
         $( ".eliminar" ).on( "click",  eliminarAudio );
+        $( ".editar" ).on( "click",  editarNombreAudio );
     });    
     
 }
 
 function eliminarAudio(){
-    var form_eliminar = $("#form_eliminar");
+    var form_mis_pistas = $("#form_mis_pistas");
+    $("#metodo_form_mis_pistas").val("delete");
     var numero_audio = $(this).attr("numero_audio");
-    var ruta_eliminar = $("#form_eliminar").attr("action");
     var nombre_audio_link = tracks[numero_audio]["audio"];
     var nombre_audio_link_sin_public = nombre_audio_link.replace('public/', '');
 
-    $("#form_eliminar").attr("action",ruta_eliminar+nombre_audio_link_sin_public);
+    $("#form_mis_pistas").attr("action","/eliminar_audio/"+nombre_audio_link_sin_public);
 
     eliminarDelLocalStorage(nombre_audio_link);
 
-    $(form_eliminar).submit();
+    $(form_mis_pistas).submit();
 }
 
 function eliminarDelLocalStorage(nombre_audio_link){
@@ -69,4 +73,47 @@ function eliminarDelLocalStorage(nombre_audio_link){
     }
 
     localStorage.local_tracks = JSON.stringify(array_localstorage);
+}
+
+function editarNombreAudio(){
+
+    cambiarInputEditarNombre(this);
+
+    //eliminarDelLocalStorage(nombre_audio_link);
+
+    //$(form_mis_pistas).submit();
+}
+
+function cambiarInputEditarNombre(boton){
+
+    numero_boton_audio = $(boton).attr("numero_audio");
+    input_audio = $("[numero_nombre_mostrar]").eq(numero_boton_audio)[0];
+    icono_boton = $(boton).children()[0];
+
+    if ($(icono_boton).text() == "create") {
+        $(input_audio).attr("disabled",false);
+        $(icono_boton).text("save");
+    }
+    else if ($(icono_boton).text() == "save") {
+        $(input_audio).attr("disabled",true);
+        $(icono_boton).text("create");
+        var nuevo_nombre = $(input_audio).val();
+        enviarPeticionEditarNombreAudio(boton, nuevo_nombre);
+    }
+    
+    //console.log(tracks[numero_boton_audio]);
+}
+
+function enviarPeticionEditarNombreAudio(boton, nuevo_nombre){
+
+    var form_mis_pistas = $("#form_mis_pistas");
+    $("#metodo_form_mis_pistas").val("put");
+    var numero_audio = $(boton).attr("numero_audio");
+    var nombre_audio_link = tracks[numero_audio]["audio"];
+    var nombre_audio_link_sin_public = nombre_audio_link.replace('public/', '');
+
+    $(form_mis_pistas).attr("action","/editar_nombre_audio/"+nombre_audio_link_sin_public+"/"+nuevo_nombre);
+
+    $(form_mis_pistas).submit();
+
 }
