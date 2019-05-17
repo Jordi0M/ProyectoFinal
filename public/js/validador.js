@@ -26,7 +26,7 @@ function validarPesoArchivo(){
     //console.log(fileSize);
     //console.log(siezekiloByte);
     if (siezekiloByte >  20000) {
-        createError("Imagen muy grande");
+        createError("Audio muy pesado");
         return false;
     }
     else{
