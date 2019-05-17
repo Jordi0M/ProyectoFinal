@@ -15,7 +15,7 @@ function validarNulos(IdForm){
     if(control){
         return true;
     }else{
-        alert("Todos los campos son obligatorios.");
+        createError("Todos los campos son obligatorios.");
         return false;
     }
 }
@@ -26,7 +26,7 @@ function validarPesoArchivo(){
     //console.log(fileSize);
     //console.log(siezekiloByte);
     if (siezekiloByte >  20000) {
-        alert("Imagen muy grande");
+        createError("Imagen muy grande");
         return false;
     }
     else{
