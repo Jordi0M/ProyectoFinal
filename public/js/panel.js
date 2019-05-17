@@ -313,7 +313,7 @@ function leerArchivo(e) {
             datosTracks();
         }
         else{
-            alert("Error, no has subido el mismo tipo de pistas");
+            createError("Error, no has subido el mismo tipo de pistas");
         }
     };
     lector.readAsText(archivo);
@@ -326,3 +326,58 @@ function RecibirTempo(){
 }
 
 
+/*function tiempoErrrores(){
+    setTimeout(eliminarErrores,5000)
+
+}
+  
+function eliminarErrores(){
+    var divErrores = $("#errores").children();
+    var NumHijos = divErrores.length;
+    if (NumHijos >0){
+        $(".error").remove();
+    }
+}
+function Error_componente(Text){
+    var divError = $('<div>').attr("align","center").attr("class","Error");
+    var div1 = $("<div>").text(Text).attr('class','col m3');
+    var div2 = $("<div>").attr('class','col m2');
+    var icon = $("<i>").attr('class','fas fa-exclamation-triangle');
+    $(divError).append(div1);
+    $(div2).append(icon);
+    $(divError).append(div2);
+    $("#errores").append(divError);
+    tiempoErrores();
+}
+*/
+
+
+var global_countTime;
+
+function uniqueError(id){
+    var control = true;
+    $('.Error').each(function(){
+        if($(this).attr('id') === id){
+            control = false;
+        }
+    });
+
+    return control;
+}
+function createError(Message,id){
+    if(uniqueError(id)){
+        $('<div>').attr({class:'Error',id:id}).text(Message).prepend($('<img>',{src:'/img/Exclamacion.png',width:'40px'}))
+        .appendTo('.ErrorContainer');
+        $('.ErrorContainer').show();
+        setTimer();
+    }
+}
+
+function setTimer(){
+    clearTimeout(global_countTime);
+    global_countTime =  setTimeout(function (){
+        var errorContainer = $('.ErrorContainer');
+        errorContainer.hide();
+        errorContainer.empty();
+    }, 5000);
+}

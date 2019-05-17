@@ -27,6 +27,8 @@
     <div class="container">
         <div>
             @yield('contenido')
+            <div class="ErrorContainer">
+            </div>
         </div>
     </div>
     
