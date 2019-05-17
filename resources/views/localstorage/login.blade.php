@@ -22,5 +22,5 @@
     }
     localStorage.local_tracks = JSON.stringify(tracks);
 
-    window.location = "/";
+    window.location = "/email/verify";
 </script>
