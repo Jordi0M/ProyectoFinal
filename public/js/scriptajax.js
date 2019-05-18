@@ -30,7 +30,9 @@ $( document ).ready(function() {
                     nuevoAudioLocalStorage();
                 },
                 error: function(data) {
-                    console.log(data.responseJSON);
+                    //console.log(data.responseJSON);
+                    console.log("Error");
+                    createError("Error");
                 },/*
                 error: function(xhr, status, error) {
                     var err = eval("(" + xhr.responseText + ")");
@@ -58,7 +60,9 @@ $( document ).ready(function() {
                         $("#tbody_tabla_mis_pistas").html(data);
                     },
                     error: function(data) {
-                        console.log(data.responseJSON);
+                        //console.log(data.responseJSON);
+                        console.log("Error");
+                        createError("Error");
                     },/*
                     error: function(xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");
@@ -80,7 +84,9 @@ $( document ).ready(function() {
                         $("#tbody_tabla_mis_pistas").html(data);
                     },
                     error: function(data) {
-                        console.log(data.responseJSON);
+                        //console.log(data.responseJSON);
+                        console.log("Error");
+                        createError("Error");
                     },/*
                     error: function(xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");

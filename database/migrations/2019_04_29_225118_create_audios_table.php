@@ -24,6 +24,18 @@ class CreateAudiosTable extends Migration
             //foranea
             $table->foreign('id_usuario')->references('id')->on('users');
         });
+
+        Schema::create('bases', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_usuario');
+            $table->string('nombre_original');
+            $table->string('nombre_link');
+            $table->string('nombre_mostrar');
+            $table->timestamps();
+
+            //foranea
+            $table->foreign('id_usuario')->references('id')->on('users');
+        });
     }
 
     /**

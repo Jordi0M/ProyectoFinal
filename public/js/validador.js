@@ -23,8 +23,6 @@ function validarNulos(IdForm){
 function validarPesoArchivo(){
     var fileSize = $('#subida_nuevo_sonido')[0].files[0].size;
     var siezekiloByte = parseInt(fileSize / 1024);
-    //console.log(fileSize);
-    //console.log(siezekiloByte);
     if (siezekiloByte >  20000) {
         createError("Audio muy pesado");
         return false;

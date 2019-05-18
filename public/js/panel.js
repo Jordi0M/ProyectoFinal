@@ -8,8 +8,6 @@ function datosTracks(){
     ////////Local Storage (guardar la informacion)
     if(typeof(Storage) !== "undefined") {
         if (localStorage.local_tracks) {
-            //console.log(JSON.parse(localStorage.local_tracks));
-            //console.log(datos_JSON);
             introducirLocalStorage();
         } 
         else {
@@ -120,8 +118,6 @@ function clickCasilla(){
 
     //al hacer click, se cambiara el modelo(array de objetos), el cual indica que esta iluminada la casilla
     var casilla_iluminada = tracks[casilla_pulsada]["casillas"][casilla_por_filas];
-
-    //console.log(tracks[casilla_pulsada]["casillas"]);
 
     if (casilla_iluminada == 1){
         $( this ).css("background-color","#686868");
@@ -302,7 +298,7 @@ function leerArchivo(e) {
         var contenido = e.target.result;
         if (JSON.parse(contenido).length == JSON.parse(localStorage.local_tracks).length) {
             for (const key in JSON.parse(localStorage.local_tracks)) {
-                //console.log(booleano);
+
                 if (JSON.parse(contenido)[key]["nombre_general"] === JSON.parse(localStorage.local_tracks)[key]["nombre_general"]) {
                     booleano = true;
                 }
