@@ -28,9 +28,8 @@ class CreateAudiosTable extends Migration
         Schema::create('bases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_usuario');
-            $table->string('nombre_original');
-            $table->string('nombre_link');
-            $table->string('nombre_mostrar');
+            $table->string('JSON');
+            $table->string('Stringify');
             $table->timestamps();
 
             //foranea
