@@ -14,10 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Has iniciado sesión!
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>window.location = "/";</script>
 @endsection
