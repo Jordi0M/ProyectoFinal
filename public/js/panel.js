@@ -249,7 +249,9 @@ function pasarDatosAPlaySonido(){
         
         l++;
         if (l >= 16) {
-            l = 0;
+            //l = 0;
+            pararSonido();
+            pasarDatosAPlaySonido();
         }
         
     },Tempo)
