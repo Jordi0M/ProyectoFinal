@@ -12,7 +12,7 @@
             <label class="Botons btn btn-secondary" id="play" title="Click para Play">
                 <i class="material-icons" style="float:left">play_arrow</i>
             </label>
-            <label class="Botons btn btn-secondary" id="stop" title="Click para Stop">
+            <label class="Botons btn btn-secondary" id="stop" title="Click para Stop" style="display:none">
                 <i class="material-icons" style="float:right">stop</i>
             </label>
             &nbsp;

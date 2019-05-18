@@ -257,6 +257,8 @@ function pasarDatosAPlaySonido(){
         }
         
     },Tempo)
+    $("#play").attr("style","display:none");
+    $("#stop").attr("style","display:inline-block");
 }
 
 function pasarArrayASonido(arrayTiempo){
@@ -276,6 +278,8 @@ function pararSonido(){
     for (var i =0; i <= Loop; i++) {
         clearInterval(i);
     }
+    $("#stop").attr("style","display:none");
+    $("#play").attr("style","display:inline-block");
 }
 
 //Descargar JSON
