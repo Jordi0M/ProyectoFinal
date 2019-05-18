@@ -39,6 +39,7 @@ function crearTracks(datos_JSON){
             nombre : datos_JSON[key]["nombre_mostrar"],
             volumen : 70,
             audio : datos_JSON[key]["nombre_link"],
+            nombre_general : datos_JSON[key]["nombre_original"],
             casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 
         };   
@@ -298,7 +299,7 @@ function leerArchivo(e) {
         if (JSON.parse(contenido).length == JSON.parse(localStorage.local_tracks).length) {
             for (const key in JSON.parse(localStorage.local_tracks)) {
                 //console.log(booleano);
-                if (JSON.parse(contenido)[key]["audio"] === JSON.parse(localStorage.local_tracks)[key]["audio"]) {
+                if (JSON.parse(contenido)[key]["nombre_general"] === JSON.parse(localStorage.local_tracks)[key]["nombre_general"]) {
                     booleano = true;
                 }
                 else{

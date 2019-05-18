@@ -5,6 +5,7 @@ function tracks_mis_pistas(){
             nombre : datos_JSON[key]["nombre_mostrar"],
             volumen : 70,
             audio : datos_JSON[key]["nombre_link"],
+            nombre_general : datos_JSON[key]["nombre_original"],
             casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         };   
         tracks.push(track); 
@@ -56,6 +57,7 @@ function nuevoAudioLocalStorage(){
         nombre : tracks[ultimo_track]["nombre"],
         volumen : 70,
         audio : tracks[ultimo_track]["audio"],
+        nombre_general : datos_JSON[ultimo_track]["nombre_original"],
         casillas : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     };   
 
