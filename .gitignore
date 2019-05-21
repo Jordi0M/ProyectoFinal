@@ -3,9 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor/*
-!/vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php
-!/vendor/laravel/framework/src/Illuminate/Auth/Notifications/VerifyEmail.php
-!vendor/laravel/framework/src/Illuminate/Notifications/resources/views/email.blade.php
 .env
 .phpunit.result.cache
 Homestead.json
