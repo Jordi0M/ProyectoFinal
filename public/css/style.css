@@ -106,11 +106,20 @@
   display: inline-block;
 
 }
-
+.mis_pistas_panel {
+  text-align: center;
+  padding-right: 10%;
+  padding-left: 10%;
+}
 #tabla_mis_pistas{
-  margin-left: 10%;
-  margin-right: 10%;
   margin-bottom: 3%;
+}
+.table-dark td{
+  text-align: center;
+  vertical-align: middle;
+}
+.input_nombre_audio{
+  text-align: center;
 }
 div.ErrorContainer{
     background-color: white;

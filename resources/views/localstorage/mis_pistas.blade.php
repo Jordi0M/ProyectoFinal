@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="row click_panel" style="background-color:gray">
+    <div class="row mis_pistas_panel" style="background-color:gray">
 
         <div class="slide_general" id="slide_general">
 			

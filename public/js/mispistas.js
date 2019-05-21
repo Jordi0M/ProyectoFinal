@@ -22,8 +22,8 @@ function mostrarListaAudios(){
         
         var nuevo_tr = $("<tr>");
         var nuevo_th = $("<th scope=row>");
-        var td_nombre_audio = $("<td>");
-        var input_td_nombre_audio = $("<input disabled>").attr("numero_nombre_mostrar",key).val(tracks[key]["nombre"]);
+        var td_nombre_audio = $("<td class=td_nombre_audio >");
+        var input_td_nombre_audio = $("<input class=input_nombre_audio disabled>").attr("numero_nombre_mostrar",key).val(tracks[key]["nombre"]);
         var td_botones = $("<td>");
         var boton_eliminar = $("<button class='btn btn-danger eliminar' style='margin-left: 5%' title='Click para eliminar el audio'>").attr("numero_audio",key);
         var boton_editar = $("<button class='btn btn-warning editar' title='Click para editar el nombre'>").attr("numero_audio",key);
