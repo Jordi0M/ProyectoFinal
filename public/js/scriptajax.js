@@ -60,7 +60,7 @@ $( document ).ready(function() {
                         $("#tbody_tabla_mis_pistas").html(data);
                     },
                     error: function(data) {
-                        console.log(data.responseJSON);
+                        //console.log(data.responseJSON);
                         console.log("Error");
                         createError("Error");
                     },/*
@@ -84,7 +84,7 @@ $( document ).ready(function() {
                         $("#tbody_tabla_mis_pistas").html(data);
                     },
                     error: function(data) {
-                        console.log(data.responseJSON);
+                        //console.log(data.responseJSON);
                         console.log("Error");
                         createError("Error");
                     },/*
