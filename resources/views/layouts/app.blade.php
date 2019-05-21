@@ -75,7 +75,10 @@
 
                                     <a class="dropdown-item" href="/logout_storage"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                if(confirm('¿Está seguro de cerrar sesion?, puede perder las casillas marcadas')){
+                                                    document.getElementById('logout-form').submit();
+                                                }">
+                                                
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
