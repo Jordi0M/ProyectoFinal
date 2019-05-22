@@ -223,7 +223,7 @@ function pasarDatosAPlaySonido(){
         return ;    
     }
 */
-    if(Tempo >= 0){
+    if($('#input-metro').val()<= 0){
         createError("No puedes introducir menos de un 1 en el tempo");
         return;    
     }
