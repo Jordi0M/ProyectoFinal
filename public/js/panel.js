@@ -250,7 +250,7 @@ function pasarDatosAPlaySonido(){
         l++;
         if (l >= 16) {
             //l = 0;
-            pararSonido();
+            pararSonido2();
             pasarDatosAPlaySonido();
         }
         
@@ -273,6 +273,15 @@ function playSonido(track){
 
 function pararSonido(){
     $(".linea_divisoria").css("color","black");
+    for (var i =0; i <= Loop; i++) {
+        clearInterval(i);
+    }
+    $("#stop").attr("style","display:none");
+    $("#play").attr("style","display:inline-block");
+}
+
+function pararSonido2(){
+    //esta no tiene "color:black"
     for (var i =0; i <= Loop; i++) {
         clearInterval(i);
     }
