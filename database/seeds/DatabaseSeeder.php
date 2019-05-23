@@ -41,11 +41,12 @@ class DatabaseSeeder extends Seeder
             1 => 'snare',
             2 => 'tom',
             3 => 'hit_hat',
-            4 => 'crash',
-            5 => 'tom_low',
+            4 => 'doble_hit_hat',
+            5 => 'crash',
+            6 => 'tom_low',
         );
 
-        for ($i=0; $i<6; $i++){
+        for ($i=0; $i<7; $i++){
             audios::create([
                 'id_usuario' =>	1,
                 'nombre_original'	 => $canciones[$i],
