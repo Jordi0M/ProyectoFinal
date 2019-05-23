@@ -55,6 +55,16 @@ function crearTracks(datos_JSON){
 }
 
 $( document ).ready(function() {
+    
+    //inicializamos los audios
+    for (const key in tracks) {
+
+        var nombre_cancion = tracks[key]["audio"];
+        var ruta_audios = "/storage/";
+        nombre_cancion = nombre_cancion.replace('public/', '');
+        new Audio(ruta_audios+nombre_cancion);
+        
+    }
 
  /// Validacion del Tempo
     var number = document.getElementById('input-metro');
