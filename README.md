@@ -1,6 +1,5 @@
 # ProyectoFinal: DrumSecuence
 
-Para que cargar bien los MP3, debemos hacer el siguiente comando: "php artisan storage:link", esto creara un link a la carpeta storage.
 
 ## Tabla de contenidos
 1. [Desarrolladores](#desarrolladores)
@@ -9,7 +8,7 @@ Para que cargar bien los MP3, debemos hacer el siguiente comando: "php artisan s
 
 ## Desarrolladores <a name="desarrolladores"></a>
 El equipo está formado por:
-- Eric Pérez (Xus) - https://github.com/EricPerLuq
+- Eric Pérez - https://github.com/EricPerLuq
 - Jordi Martínez - https://github.com/Jordi0M
 
 
@@ -40,15 +39,25 @@ Al tener ya la base de datos, tendremos que hacer dentro de la carpeta un **comp
     DB_PASSWORD="contraseña"
 ***
 
-Procederemos a hacer el comando para generar la clave que utilizará la aplicación:
+Procederemos a hacer el comando para generar la clave que utilizará la aplicación, y la migracion de la base de datos:
 ***
-    php artisan key:generate.
-***
-
-Haremos la migracion de la base de datos con:
-***
+    php artisan key:generate
     php artisan migrate
 ***
 
-(En caso de que ya tuviesemos una migracion hecha, podemos usar el comando "php artisan migrate:refresh" para borrar las tablas de la base de datos, y que nos la vuelva a crear. **Borrara toda la informacion que tengamos en la base de datos**)
+(En caso de que ya tuviesemos una migracion hecha, podemos usar el comando "php artisan migrate:fresh" para borrar las tablas de la base de datos, y que nos la vuelva a crear. **Borrara toda la informacion que tengamos en la base de datos**)
 
+Para que se guarden bien los audios, debemos hacer un comando, el cual creara un link a la carpeta storage para poder guardar en local los ficheros y luego poder mostrarlos linkandolos a la base de datos.
+***
+    php artisan storage:link
+***
+
+Una vez tengamos el link generado, copiaremos los audios de **audios_principales** dentro del directorio **storage** situado dentro de la carpeta **Public**.
+
+Para añadir informacion a la base de datos, tendremos el seeder, el cual lo utilizaremos con el siguiente comando:
+***
+    php artisan db:seed
+***
+(El contenido lo puedes modificar desde su respectiva carpeta, ya que utilizara los datos que nosotros le hemos dado)
+
+Una vez hayamos hecho esto, tendremos la informacion generada en la base de datos para poder utilizar el programa.
