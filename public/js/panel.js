@@ -89,6 +89,7 @@ function crearPanel(){
     var tabla = $("<table id=tabla_panel class=tabla_panel table table-striped style='width:1024px;'>");
 
     $("#slide_general").append(tabla);
+    numerosCasillasDelReproductor();
 
     for (const key in tracks) {
         //if (key > 5){
@@ -196,6 +197,23 @@ function crearSlide(key, tr_pista){
     } 
 }
 
+function numerosCasillasDelReproductor(){
+    var tabla = $("#tabla_panel");
+    var tr_numeros_lineas_tempo = $("<tr>");
+    var primer_td_invisible = $("<td>");
+    var td_numeros_lineas = $("<td>").attr("class","numeros_lineas_reproductor");
+    var CssCasilla={"width":'40px',"height":'12px', "text-align":"center", "font-size":"13px"};
+
+    for (let index = 0; index < 16; index++) {
+        var div_linea_tempo = $("<div>").attr("class","numeros_linea_tempo").text(index).css(CssCasilla);
+        $(td_numeros_lineas).append(div_linea_tempo);
+    }
+
+    $(tr_numeros_lineas_tempo).append(primer_td_invisible);
+    $(tr_numeros_lineas_tempo).append(td_numeros_lineas);
+    $(tabla).append(tr_numeros_lineas_tempo);
+}
+
 function lineasDelReproductor(){
     var tabla = $("#tabla_panel");
     var tr_lineas_divisorias = $("<tr>");
@@ -249,6 +267,9 @@ function pasarDatosAPlaySonido(){
     Loop = setInterval(function(){
         $(".linea_divisoria").css("color","black");
         $(".linea_divisoria").eq(l).css("color","cyan");
+        $(".numeros_linea_tempo").css("color","black");
+        $(".numeros_linea_tempo").eq(l).css("color","cyan");
+        
         pasarArrayASonido(arrayTiempo[l]);
         
         l++;
@@ -277,6 +298,7 @@ function playSonido(track){
 
 function pararSonido(){
     $(".linea_divisoria").css("color","black");
+    $(".numeros_linea_tempo").css("color","black");
     for (var i =0; i <= Loop; i++) {
         clearInterval(i);
     }
