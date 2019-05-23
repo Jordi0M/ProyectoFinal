@@ -46,7 +46,7 @@ class AudiosController extends Controller
             
             $validator = Validator::make($request->all(), [
                 'nuevo_nombre_del_sonido' => 'required',
-                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac|max:20000'
+                'sonido' => 'required|mimes:mpga,mp3,mp4,wav,mid,aac|max:1000'
                     ]);
             
             if($validator->fails()){
