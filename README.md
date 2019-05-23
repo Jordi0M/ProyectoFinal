@@ -60,4 +60,16 @@ Para añadir informacion a la base de datos, tendremos el seeder, el cual lo uti
 ***
 (El contenido lo puedes modificar desde su respectiva carpeta, ya que utilizara los datos que nosotros le hemos dado)
 
-Una vez hayamos hecho esto, tendremos la informacion generada en la base de datos para poder utilizar el programa.
+Una vez hayamos hecho esto, tendremos la informacion generada en la base de datos para poder utilizar la aplicación.
+
+Por ultimo, para hacer funcionar el mail (tanto verificacion como recuperar contraseña), tendremos que volver a modificar el fichero **.env**, rellenando los siguientes campos:
+***
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp_que_escojamos
+    MAIL_PORT=puerto_smpt
+    MAIL_USERNAME=usuario_mail
+    MAIL_PASSWORD=contraseña_mail
+    MAIL_ENCRYPTION=encriptacion_mail
+***
+
+Para finalizar, ejecutaremos el comando *"php artisan serve"*, y ya podremos utilizar la aplicacion al completo!.
