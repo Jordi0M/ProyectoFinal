@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
         $canciones = array(
             0 => 'kick.mp3',
             1 => 'snare.mp3',
-            2 => 'tom.wav',
+            2 => 'tom.mp3',
             3 => 'hit_hat.mp3',
             4 => 'crash.mp3',
-            5 => 'tom_low.wav',
+            5 => 'tom_low.mp3',
         );
 
         $canciones_sin_extension = array(
