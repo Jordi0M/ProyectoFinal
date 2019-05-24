@@ -4,8 +4,19 @@
 
 @section('contenido')
     <div class="row" style="background-color:gray">
-        <div style="text-align:left" class="col-sm-2">
+        <div style="text-align:center" class="col-sm-2">
             
+            <div class="dropdown" aria-labelledby="navbarDropdown">
+                <button class="Botons btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Información</button>
+                <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="/manuales/manual_usuario.pdf" target="_blank">
+                        Manual de usuario
+                    </a>
+                    <a class="dropdown-item" href="/manuales/memoria_tecnica.pdf" target="_blank">        
+                        Memoria Tecnica
+                    </a>
+                </ul>
+            </div>
             
         </div>
         <div class="col-sm-8" id="Botonera">

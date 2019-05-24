@@ -140,6 +140,9 @@ div.ErrorContainer{
     margin: 10px;
 }
 
+.dropdown-menu a:hover {background-color: #ddd;}
+
+
 @keyframes resplandorAnimation {
   0%,100%{
     box-shadow: 10px 20px 20px;

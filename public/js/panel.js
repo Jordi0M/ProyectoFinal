@@ -215,7 +215,7 @@ function numerosCasillasDelReproductor(){
     var CssCasilla={"width":'40px',"height":'12px', "text-align":"center", "font-size":"13px"};
 
     for (let index = 0; index < 16; index++) {
-        var div_linea_tempo = $("<div>").attr("class","numeros_linea_tempo").text(index).css(CssCasilla);
+        var div_linea_tempo = $("<div>").attr("class","numeros_linea_tempo").text(index+1).css(CssCasilla);
         $(td_numeros_lineas).append(div_linea_tempo);
     }
 
