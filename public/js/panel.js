@@ -341,33 +341,6 @@ function RecibirTempo(){
     Tempo=60000/valTempo;
 }
 
-
-/*function tiempoErrrores(){
-    setTimeout(eliminarErrores,5000)
-
-}
-  
-function eliminarErrores(){
-    var divErrores = $("#errores").children();
-    var NumHijos = divErrores.length;
-    if (NumHijos >0){
-        $(".error").remove();
-    }
-}
-function Error_componente(Text){
-    var divError = $('<div>').attr("align","center").attr("class","Error");
-    var div1 = $("<div>").text(Text).attr('class','col m3');
-    var div2 = $("<div>").attr('class','col m2');
-    var icon = $("<i>").attr('class','fas fa-exclamation-triangle');
-    $(divError).append(div1);
-    $(div2).append(icon);
-    $(divError).append(div2);
-    $("#errores").append(divError);
-    tiempoErrores();
-}
-*/
-
-
 var global_countTime;
 
 function uniqueError(id){
